@@ -17,7 +17,14 @@ class InteractiveTerminal {
       bio: this.cmdAbout.bind(this),
       skills: this.cmdSkills.bind(this),
       projects: this.cmdProjects.bind(this),
-      iot: this.cmdIot.bind(this),
+      agent: this.cmdAgent.bind(this),
+      rag: this.cmdRag.bind(this),
+      cloud: this.cmdCloud.bind(this),
+      terraform: this.cmdTerraform.bind(this),
+      tf: this.cmdTerraform.bind(this),
+      gcp: this.cmdGcp.bind(this),
+      flask: this.cmdFlask.bind(this),
+      api: this.cmdFlask.bind(this),
       contact: this.cmdContact.bind(this),
       clear: this.cmdClear.bind(this),
       cls: this.cmdClear.bind(this),
@@ -128,7 +135,7 @@ class InteractiveTerminal {
   }
 
   escapeHTML(str) {
-    return str.replace(/[&<>'"]/g, 
+    return str.replace(/[&<>'"]/g,
       tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
     );
   }
@@ -137,11 +144,16 @@ class InteractiveTerminal {
     return `
 <span class="term-success">=================== ARGHYAOS CLI COMMANDS ===================</span>
 <span class="term-cmd">help</span>       - Displays this list of available commands
-<span class="term-cmd">about</span>      - Learn more about Arghya Mukherjee & engineering philosophy
-<span class="term-cmd">skills</span>     - Summary of technical proficiencies (Python, AI, IoT, APIs)
-<span class="term-cmd">projects</span>   - Highlighted engineering projects and architecture
-<span class="term-cmd">iot</span>        - Inspect live IoT node telemetry simulation
-<span class="term-cmd">fetch</span>      - Display developer profile & system specifications
+<span class="term-cmd">about</span>      - Developer profile &amp; TCS AI/ML Cloud background
+<span class="term-cmd">skills</span>     - Core technical stack (Agentic AI, AWS, Azure, GCP, K8s, Python)
+<span class="term-cmd">projects</span>   - Highlighted enterprise solutions &amp; architecture
+<span class="term-cmd">agent</span>      - Inspect live LangGraph &amp; Strands multi-agent state
+<span class="term-cmd">terraform</span>  - View Infrastructure as Code (IaC) &amp; GitOps status
+<span class="term-cmd">gcp</span>        - Google Cloud Platform &amp; Multi-Cloud cluster telemetry
+<span class="term-cmd">flask</span>      - Inspect Python &amp; Flask RESTful API Gateway layer
+<span class="term-cmd">rag</span>        - Query AWS Bedrock &amp; ChromaDB RAG vector engine
+<span class="term-cmd">cloud</span>      - Multi-Cloud (AWS, Azure, GCP) infrastructure overview
+<span class="term-cmd">fetch</span>      - Display system runtime &amp; credentials
 <span class="term-cmd">contact</span>    - Get direct contact links (Email, GitHub, LinkedIn)
 <span class="term-cmd">matrix</span>     - Toggle matrix stream cyber effect
 <span class="term-cmd">theme</span>      - Switch theme: 'theme obsidian', 'theme space', 'theme matrix'
@@ -157,11 +169,11 @@ class InteractiveTerminal {
 <span class="term-cmd">Arghya Mukherjee</span> (ArghyaX)
 <span class="term-success">AI/ML &amp; Cloud Engineer @ Tata Consultancy Services (TCS)</span>
 
-Specializing in:
+Building production-grade Agentic AI systems across AWS, Azure, and GCP:
 • <span class="term-purple">Agentic AI &amp; Multi-Agent Swarms</span>: LangGraph, LangChain, Strands Agents
-• <span class="term-info">LLMs &amp; Enterprise RAG</span>: AWS Bedrock, Azure OpenAI, ChromaDB, Qdrant
-• <span class="term-success">Cloud Native &amp; DevOps</span>: Kubernetes, Docker, CI/CD Pipelines, Azure Cloud
-• <span class="term-warning">Python &amp; IoT Telemetry</span>: FastAPI, AsyncIO, Celery, ESP32, Raspberry Pi, MQTT
+• <span class="term-info">Multi-Cloud &amp; IaC</span>: AWS Bedrock, Azure (AKS), GCP (Vertex/GKE), Terraform
+• <span class="term-success">Container &amp; GitOps</span>: Kubernetes (K8s), Docker, GitHub Actions, Helm, ArgoCD
+• <span class="term-warning">Python, Flask &amp; APIs</span>: Flask, FastAPI, AsyncIO, Redis, PostgreSQL, Zero-Trust
 
 GitHub: <a href="https://github.com/ArghyaMuk" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">https://github.com/ArghyaMuk</a>
     `;
@@ -172,9 +184,9 @@ GitHub: <a href="https://github.com/ArghyaMuk" target="_blank" style="color:var(
 <span class="term-success">⚡ CORE TECHNICAL STACK:</span>
 ┌────────────────────────────────────────────────────────────────────────┐
 │ <span class="term-purple">Agentic AI &amp; LLMs</span>  : LangGraph, LangChain, Strands Agents, AWS Bedrock, RAG
-│ <span class="term-info">Cloud &amp; DevOps</span>     : Kubernetes (K8s), Azure, Docker, CI/CD, Linux, Nginx
-│ <span class="term-success">Python &amp; Backends</span>  : FastAPI, AsyncIO, Celery, Redis, PostgreSQL, SQLAlchemy
-│ <span class="term-warning">IoT &amp; Hardware</span>      : ESP32, Raspberry Pi, MQTT/Mosquitto, I2C/SPI, MicroPython
+│ <span class="term-info">Cloud &amp; IaC</span>        : AWS, Azure, GCP, Terraform, Kubernetes (K8s), GitOps
+│ <span class="term-success">Python &amp; APIs</span>      : Python 3.11, Flask, FastAPI, AsyncIO, Redis, PostgreSQL
+│ <span class="term-warning">LLMOps &amp; Security</span>  : ChromaDB, Qdrant, OAuth2 / JWT Zero-Trust, Docker
 └────────────────────────────────────────────────────────────────────────┘
     `;
   }
@@ -182,26 +194,77 @@ GitHub: <a href="https://github.com/ArghyaMuk" target="_blank" style="color:var(
   cmdProjects() {
     return `
 <span class="term-success">🚀 FEATURED ENGINEERING PROJECTS:</span>
-1. <span class="term-purple">NeuroQuery RAG &amp; Agentic Assistant</span>:
-   - Enterprise documentation QA powered by LangGraph, AWS Bedrock &amp; Vector Embeddings.
-2. <span class="term-info">OmniSense IoT Telemetry Platform</span>:
-   - ESP32 + Raspberry Pi distributed telemetry hub with MQTT &amp; FastAPI WebSocket engine.
-3. <span class="term-warning">SentinelGuard Async API Gateway</span>:
-   - Async reverse proxy with Redis token-bucket rate limiting and JWT auth verification.
-4. <span class="term-success">VisionEdge Edge AI Automation</span>:
-   - On-device real-time OpenCV &amp; PyTorch computer vision defect detection pipeline.
+1. <span class="term-purple">AgentGraph Multi-Agent Orchestrator</span>:
+   - Stateful multi-agent swarm framework built with LangGraph, Strands Agents &amp; AWS Bedrock.
+2. <span class="term-info">NeuroQuery Enterprise RAG Engine</span>:
+   - Grounded document QA powered by LangChain, AWS Bedrock, ChromaDB &amp; Qdrant.
+3. <span class="term-warning">SentinelGuard Cloud API Gateway</span>:
+   - Kubernetes-native reverse proxy with Redis token-bucket rate limiter &amp; JWT zero-trust auth.
+4. <span class="term-success">CloudOps Kubernetes GitOps Engine</span>:
+   - Automated CI/CD pipelines deploying AI agent microservices on Azure AKS &amp; GCP.
 
 <span class="term-dim">Scroll down to the Projects section or click on project cards for deep architecture blueprints!</span>
     `;
   }
 
-  cmdIot() {
+  cmdAgent() {
     return `
-<span class="term-warning">📡 REAL-TIME IOT TELEMETRY NODE HEALTH:</span>
-[Node 01: ESP32-TempHum]   : <span class="term-success">ONLINE</span> (24.8°C / 58% RH) - MQTT: 100ms interval
-[Node 02: RPi-TelemetryHub] : <span class="term-success">ONLINE</span> (CPU: 22% / Mem: 34%) - Broker: Mosquitto v2.0
-[Node 03: VibraSense-Edge]  : <span class="term-success">CALIBRATED</span> (0.04g RMS) - Protocol: Modbus/TCP
-<span class="term-info">Check the interactive IoT Telemetry Lab on the page to trigger live sensor spikes and packet inspector!</span>
+<span class="term-purple">🤖 LANGGRAPH MULTI-AGENT SWARM STATUS:</span>
+[Node: Chief Planner]     : <span class="term-success">ACTIVE</span> (State Graph: Cyclic / In-Memory Checkpointer)
+[Node: Strands Tool Agent] : <span class="term-success">READY</span> (Registered Tools: WebSearch, VectorQuery, CodeExec)
+[Node: AWS Bedrock LLM]   : <span class="term-success">CONNECTED</span> (Model: Anthropic Claude 3.5 Sonnet)
+[Node: RAG Verifier]      : <span class="term-success">OPTIMAL</span> (Hallucination Guardrail: 0.98 Confidence)
+<span class="term-info">Explore the interactive Agentic AI Studio on the page to dispatch live agent swarms!</span>
+    `;
+  }
+
+  cmdTerraform() {
+    return `
+<span class="term-purple">🏗️ TERRAFORM INFRASTRUCTURE AS CODE (IaC):</span>
+• Cloud Targets       : AWS (EKS, Bedrock, VPC) • Azure (AKS, Key Vault) • GCP (GKE, Artifacts)
+• Modules Configured  : 14 Reusable HCL Modules
+• State Backend       : Terraform Cloud Remote State Locking
+• IaC Security        : tfsec &amp; Checkov automated scanning PASSED
+    `;
+  }
+
+  cmdGcp() {
+    return `
+<span class="term-info">🟩 GOOGLE CLOUD PLATFORM (GCP) INTEGRATION:</span>
+• Compute Engine      : Google Kubernetes Engine (GKE Autopilot)
+• AI Platform         : Vertex AI Foundation Model Gateway
+• Security &amp; IAM      : Workload Identity Federation with AWS / Azure
+• Networking          : Cloud Armor DDoS defense &amp; Global HTTPS Load Balancer
+    `;
+  }
+
+  cmdFlask() {
+    return `
+<span class="term-success">🐍 PYTHON &amp; FLASK RESTFUL API GATEWAY:</span>
+• Architecture        : Modular Flask Blueprints &amp; FastAPI Async Microservices
+• Security Layer      : OAuth2.0 / JWT Cryptographic Validation &amp; RBAC
+• Performance         : Redis Token Bucket Rate Limiter (< 2ms execution)
+• Database Pool       : SQLAlchemy Async connection pooling with PostgreSQL
+    `;
+  }
+
+  cmdRag() {
+    return `
+<span class="term-info">🔍 HYBRID RAG VECTOR STORE ENGINE:</span>
+• Embeddings Engine    : Amazon Titan Multimodal v2 / OpenAI text-embedding-3-large
+• Vector Stores        : ChromaDB (Local dev) / Qdrant (Cloud cluster)
+• Retrieval Precision  : 96.2% Grounded Accuracy (Reciprocal Rank Fusion)
+• Latency (TTFT)       : ~190ms streaming via FastAPI WebSockets
+    `;
+  }
+
+  cmdCloud() {
+    return `
+<span class="term-success">☁️ MULTI-CLOUD INFRASTRUCTURE (AWS, Azure &amp; GCP):</span>
+• Kubernetes (K8s)     : 12 Node Multi-Region Pool • 48 Microservice Deployments • HPA Active
+• Cloud AI Gateways    : AWS Bedrock + Azure OpenAI + GCP Vertex AI
+• CI/CD &amp; GitOps       : GitHub Actions automated lint, test, Docker build &amp; ArgoCD sync
+• Observability        : Prometheus metrics + Grafana dashboard stream
     `;
   }
 
@@ -210,7 +273,7 @@ GitHub: <a href="https://github.com/ArghyaMuk" target="_blank" style="color:var(
 <span class="term-success">📬 CONTACT &amp; CHANNELS:</span>
 • GitHub   : <a href="https://github.com/ArghyaMuk" target="_blank" style="color:var(--accent-cyan);">github.com/ArghyaMuk</a>
 • Email    : arghya.dev.x@gmail.com
-• Status   : AI/ML &amp; Cloud Engineer @ TCS. Open for Agentic AI, Cloud &amp; IoT discussions.
+• Status   : AI/ML &amp; Cloud Engineer @ TCS. Open for Agentic AI, Cloud &amp; LLM discussions.
     `;
   }
 
@@ -223,7 +286,7 @@ GitHub: <a href="https://github.com/ArghyaMuk" target="_blank" style="color:var(
     return `
 <pre style="color:var(--accent-cyan); font-size:0.75rem; margin:0.5rem 0;">
       /\\_/\   
-     ( o.o )  ArghyaMuk@TCS-Cloud
+     ( o.o )  ArghyaMuk-Cloud
       > ^ <   --------------------
 </pre>
 <span class="term-info">Role</span>      : AI/ML &amp; Cloud Engineer @ TCS

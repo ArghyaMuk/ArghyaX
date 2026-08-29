@@ -745,97 +745,329 @@ img {
 }
 
 /* Hero Visual / Avatar Showcase */
+/* ==========================================================================
+   J.A.R.V.I.S. ARC REACTOR HOLOGRAPHIC AI CORE & HUD SYSTEM
+   ========================================================================== */
 .hero-visual {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1.5rem 0;
 }
 
-.avatar-wrapper {
+.jarvis-container {
   position: relative;
-  width: 340px;
-  height: 340px;
+  width: 380px;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: transform var(--transition-normal);
 }
 
-.avatar-ring {
+.jarvis-container:hover {
+  transform: scale(1.02);
+}
+
+/* 1. Concentric Holographic HUD Rings */
+.jarvis-hud-ring {
   position: absolute;
-  inset: -12px;
   border-radius: 50%;
-  background: conic-gradient(from 0deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink), var(--accent-cyan));
-  animation: rotate-ring 12s linear infinite;
-  opacity: 0.6;
-  filter: blur(12px);
+  pointer-events: none;
+  transition: all var(--transition-normal);
 }
 
-@keyframes rotate-ring {
+.ring-outer {
+  width: 370px;
+  height: 370px;
+  border: 1.5px dashed rgba(var(--accent-cyan-rgb), 0.35);
+  box-shadow: 0 0 25px rgba(var(--accent-cyan-rgb), 0.15), inset 0 0 25px rgba(var(--accent-cyan-rgb), 0.1);
+  animation: rotate-ring-cw 24s linear infinite;
+}
+
+.ring-outer::before, .ring-outer::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--accent-cyan);
+  border-radius: 50%;
+  background: var(--bg-primary);
+}
+.ring-outer::before { top: -7px; left: 50%; transform: translateX(-50%); }
+.ring-outer::after { bottom: -7px; left: 50%; transform: translateX(-50%); }
+
+.ring-middle {
+  width: 310px;
+  height: 310px;
+  border: 2px solid transparent;
+  border-top-color: rgba(var(--accent-cyan-rgb), 0.7);
+  border-bottom-color: rgba(var(--accent-purple-rgb), 0.7);
+  border-left-color: rgba(var(--accent-emerald-rgb), 0.5);
+  animation: rotate-ring-ccw 16s linear infinite;
+}
+
+.ring-inner {
+  width: 260px;
+  height: 260px;
+  border: 1px dotted rgba(var(--accent-cyan-rgb), 0.6);
+  animation: rotate-ring-cw 10s linear infinite;
+}
+
+/* Radar Sweep Beam */
+.jarvis-radar-sweep {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, rgba(var(--accent-cyan-rgb), 0.25) 0deg, transparent 60deg, transparent 360deg);
+  animation: rotate-ring-cw 4s linear infinite;
+  pointer-events: none;
+}
+
+/* Holographic Reticle Crosshairs */
+.jarvis-crosshair-h, .jarvis-crosshair-v {
+  position: absolute;
+  background: rgba(var(--accent-cyan-rgb), 0.2);
+  pointer-events: none;
+}
+.jarvis-crosshair-h {
+  width: 100%;
+  height: 1px;
+}
+.jarvis-crosshair-v {
+  height: 100%;
+  width: 1px;
+}
+
+/* 2. Central Core Arc Reactor Sphere */
+.jarvis-core-sphere {
+  position: relative;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2.5px solid rgba(var(--accent-cyan-rgb), 0.85);
+  box-shadow: 0 0 50px rgba(var(--accent-cyan-rgb), 0.7), inset 0 0 35px rgba(var(--accent-cyan-rgb), 0.9);
+  background: #030712;
+  z-index: 2;
+  transition: all var(--transition-normal);
+}
+
+.jarvis-container:hover .jarvis-core-sphere {
+  box-shadow: 0 0 70px rgba(var(--accent-cyan-rgb), 0.9), inset 0 0 45px rgba(var(--accent-cyan-rgb), 1);
+  border-color: #ffffff;
+}
+
+.jarvis-core-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: pulse-core 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-core {
+  0% { transform: scale(1); filter: brightness(1); }
+  100% { transform: scale(1.06); filter: brightness(1.2) drop-shadow(0 0 15px var(--accent-cyan)); }
+}
+
+/* 3. Orbital Telemetry HUD Nodes (Zero Overlap Guaranteed) */
+.jarvis-hud-node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.85rem;
+  background: rgba(10, 14, 26, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(var(--accent-cyan-rgb), 0.35);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 15px rgba(var(--accent-cyan-rgb), 0.2);
+  z-index: 5;
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+}
+
+.jarvis-hud-node:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(var(--accent-cyan-rgb), 0.5);
+  transform: translateY(-3px) scale(1.04);
+}
+
+.hud-tag-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.hud-tag-content {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.hud-tag-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.hud-tag-val {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Distinct Non-Overlapping Position Anchors */
+.node-tl {
+  top: -15px;
+  left: -40px;
+  border-left: 3px solid var(--accent-cyan);
+  animation: float-tl 5s ease-in-out infinite;
+}
+.node-tl .hud-tag-dot { background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan); }
+.node-tl .hud-tag-val { color: var(--accent-cyan); }
+
+.node-tr {
+  top: 10px;
+  right: -55px;
+  border-right: 3px solid var(--accent-amber);
+  animation: float-tr 5.5s ease-in-out infinite;
+}
+.node-tr .hud-tag-dot { background: var(--accent-amber); box-shadow: 0 0 10px var(--accent-amber); }
+.node-tr .hud-tag-val { color: var(--accent-amber); }
+
+.node-bl {
+  bottom: 10px;
+  left: -50px;
+  border-left: 3px solid var(--accent-emerald);
+  animation: float-bl 4.8s ease-in-out infinite;
+}
+.node-bl .hud-tag-dot { background: var(--accent-emerald); box-shadow: 0 0 10px var(--accent-emerald); }
+.node-bl .hud-tag-val { color: var(--accent-emerald); }
+
+.node-br {
+  bottom: -15px;
+  right: -45px;
+  border-right: 3px solid var(--accent-purple);
+  animation: float-br 5.2s ease-in-out infinite;
+}
+.node-br .hud-tag-dot { background: var(--accent-purple); box-shadow: 0 0 10px var(--accent-purple); }
+.node-br .hud-tag-val { color: var(--accent-purple); }
+
+/* Float Keyframes for Natural Holographic Orbiting */
+@keyframes float-tl {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-4px, -6px); }
+}
+@keyframes float-tr {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(6px, -4px); }
+}
+@keyframes float-bl {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-5px, 5px); }
+}
+@keyframes float-br {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(5px, 6px); }
+}
+
+@keyframes rotate-ring-cw {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-.avatar-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid rgba(var(--accent-cyan-rgb), 0.5);
-  background: var(--bg-secondary);
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), var(--glow-cyan);
+@keyframes rotate-ring-ccw {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
 }
 
-.avatar-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform var(--transition-slow);
-}
-
-.avatar-wrapper:hover .avatar-img {
-  transform: scale(1.05);
-}
-
-/* Floating Tech Chips */
-.floating-chip {
+/* Shockwave Pulse Effect on Click */
+.jarvis-shockwave {
   position: absolute;
-  padding: 0.55rem 1rem;
-  background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border-card);
-  border-radius: var(--border-radius-md);
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  font-weight: 600;
-  box-shadow: var(--shadow-card);
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  border: 3px solid var(--accent-cyan);
+  box-shadow: 0 0 30px var(--accent-cyan);
+  pointer-events: none;
+  animation: shockwave-expand 0.9s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  z-index: 10;
+}
+
+@keyframes shockwave-expand {
+  0% { transform: scale(1); opacity: 1; border-width: 4px; }
+  100% { transform: scale(2.4); opacity: 0; border-width: 1px; }
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .jarvis-container {
+    width: 300px;
+    height: 300px;
+  }
+  .ring-outer { width: 290px; height: 290px; }
+  .ring-middle { width: 250px; height: 250px; }
+  .ring-inner { width: 200px; height: 200px; }
+  .jarvis-core-sphere { width: 160px; height: 160px; }
+  .node-tl { left: -10px; top: -25px; }
+  .node-tr { right: -15px; top: -10px; }
+  .node-bl { left: -15px; bottom: -10px; }
+  .node-br { right: -10px; bottom: -25px; }
+  .hud-tag-val { font-size: 0.72rem; }
+}
+
+/* Architecture Mode Switcher Pills */
+.arch-switcher-bar {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  animation: float 4s ease-in-out infinite;
-  z-index: 3;
+  padding: 0.35rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--border-radius-md);
+  margin-bottom: 1.25rem;
+  overflow-x: auto;
 }
 
-.floating-chip-1 {
-  top: 10%;
-  left: -20px;
-  border-color: rgba(var(--accent-cyan-rgb), 0.4);
-  color: var(--accent-cyan);
-  animation-delay: 0s;
+.arch-pill-btn {
+  padding: 0.45rem 0.95rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
-.floating-chip-2 {
-  bottom: 12%;
-  right: -25px;
-  border-color: rgba(var(--accent-purple-rgb), 0.4);
-  color: var(--accent-purple);
-  animation-delay: 1.5s;
+.arch-pill-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.floating-chip-3 {
-  top: 75%;
-  left: -15px;
-  border-color: rgba(var(--accent-emerald-rgb), 0.4);
-  color: var(--accent-emerald);
-  animation-delay: 2.5s;
+.arch-pill-btn.active {
+  color: #090a10;
+  background: var(--accent-cyan);
+  font-weight: 600;
+  box-shadow: 0 0 15px rgba(var(--accent-cyan-rgb), 0.4);
 }
 
 @keyframes float {

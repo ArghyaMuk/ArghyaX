@@ -110,7 +110,7 @@ window.soundFX = new SoundEffects();
    2. Typewriter Effect
    -------------------------------------------------------------------------- */
 class Typewriter {
-  constructor(elementId, roles, speed = 90, delay = 2200) {
+  constructor(elementId, roles, speed = 80, delay = 2200) {
     this.el = document.getElementById(elementId);
     this.roles = roles;
     this.speed = speed;
@@ -122,6 +122,7 @@ class Typewriter {
   }
 
   type() {
+    if (!this.el) return;
     const currentRole = this.roles[this.roleIdx];
 
     if (this.isDeleting) {
@@ -149,74 +150,84 @@ class Typewriter {
   }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  new Typewriter('hero-typewriter', [
+    'AI/ML Engineer @ TCS',
+    'Production Agentic AI on AWS, Azure & GCP',
+    'LangGraph & Strands Multi-Agent Swarms',
+    'Terraform, Kubernetes & GitOps Specialist',
+    'Secure Python, Flask & FastAPI RESTful APIs'
+  ], 80, 2200);
+});
+
 /* --------------------------------------------------------------------------
    3. Projects Data & Modal Breakdown
    -------------------------------------------------------------------------- */
 const PROJECTS_DATA = {
-  omnisense: {
-    title: 'OmniSense IoT Telemetry Platform',
-    category: 'IoT & Hardware',
-    image: 'assets/omnisense_iot.jpg',
-    description: 'A distributed edge-to-cloud IoT telemetry and monitoring ecosystem built with ESP32 microcontrollers, Raspberry Pi gateways, MQTT message brokers, and an asynchronous Python FastAPI real-time WebSocket backend.',
-    problem: 'Industrial edge sensors often suffer from high latency, packet loss over unreliable networks, and lack unified low-latency telemetry visualization.',
-    solution: 'Engineered an asynchronous MQTT-to-WebSocket pipeline with automatic edge packet buffering on ESP32, dynamic QoS throttling, and sub-40ms real-time browser analytics charts.',
-    techStack: ['Python 3.11', 'FastAPI', 'MQTT / Mosquitto', 'ESP32 / C++', 'Raspberry Pi', 'WebSockets', 'Chart.js', 'Docker'],
+  agentgraph: {
+    title: 'AgentGraph Multi-Agent Orchestrator',
+    category: 'Agentic AI & LLMs',
+    image: 'assets/agentgraph_orchestrator.jpg',
+    description: 'An enterprise-scale autonomous multi-agent orchestration framework built with LangGraph, LangChain, and Strands Agents. Coordinates autonomous swarms of specialized agents for complex multi-step reasoning, dynamic tool dispatch, and cyclical state evaluation with AWS Bedrock.',
+    problem: 'Single-prompt LLM interactions fail on complex enterprise workflows requiring iterative planning, autonomous web/database tool execution, state rollback, and human-in-the-loop validation.',
+    solution: 'Engineered a stateful LangGraph cyclical state machine with Strands Agents coordinating Planner, Researcher, Coder, and Verifier nodes with persistent state checkpointing in PostgreSQL/Redis.',
+    techStack: ['Python 3.11', 'LangGraph', 'Strands Agents', 'LangChain', 'AWS Bedrock', 'FastAPI', 'Redis', 'Docker'],
     metrics: {
-      latency: '< 35ms E2E Latency',
-      throughput: '10k+ Packets/sec',
-      uptime: '99.99% Reliability',
-      nodes: 'Multi-Node Cluster'
+      swarm: '5 Active Agent Swarm',
+      latency: '180ms Node Latency',
+      reliability: '98.5% Task Completion',
+      throughput: 'Async Concurrency'
     },
-    demoUrl: '#iot-lab',
+    demoUrl: '#agentic-studio',
     repoUrl: 'https://github.com/ArghyaMuk'
   },
   neuroquery: {
-    title: 'NeuroQuery RAG AI Engine',
-    category: 'AI & Machine Learning',
+    title: 'NeuroQuery Enterprise RAG Engine',
+    category: 'AI & Cloud',
     image: 'assets/neuroquery_rag.jpg',
-    description: 'A high-throughput Retrieval-Augmented Generation (RAG) assistant designed for instant semantic querying across multi-format technical documents, API specifications, and codebases.',
-    problem: 'Large Language Models suffer from hallucinations and lack context on proprietary documentation and internal system protocols.',
-    solution: 'Designed a hybrid semantic search pipeline combining dense vector embeddings (Chroma/Qdrant) with reciprocal rank fusion (RRF) reranking, LangChain document chunking, and streaming LLM responses via FastAPI.',
-    techStack: ['Python', 'LangChain', 'OpenAI / Anthropic APIs', 'ChromaDB / Qdrant', 'FastAPI', 'PyTorch', 'Docker'],
+    description: 'A high-throughput enterprise Retrieval-Augmented Generation (RAG) assistant running on AWS Bedrock and Microsoft Azure, providing grounded semantic search across complex technical repositories and internal documentation.',
+    problem: 'Enterprise knowledge discovery suffers from unstructured data silos, model hallucinations, and inadequate token window usage.',
+    solution: 'Implemented hybrid semantic vector search with ChromaDB and Qdrant, reciprocal rank fusion (RRF) reranking, LangChain document chunking, and streaming foundation models via AWS Bedrock.',
+    techStack: ['Python', 'AWS Bedrock', 'LangChain', 'Azure OpenAI', 'ChromaDB / Qdrant', 'FastAPI', 'Docker'],
     metrics: {
-      accuracy: '94.8% Retrieval Precision',
-      latency: '240ms Query Response',
-      index: '100k+ Indexed Chunks',
-      throughput: 'Async Streaming'
+      accuracy: '96.2% Retrieval Precision',
+      latency: '190ms Time-to-First-Token',
+      index: '250k+ Indexed Chunks',
+      security: 'Enterprise IAM Guardrails'
     },
     demoUrl: '#',
     repoUrl: 'https://github.com/ArghyaMuk'
   },
   sentinel: {
-    title: 'SentinelGuard Async API Gateway',
-    category: 'Backend & APIs',
+    title: 'SentinelGuard Cloud API Gateway',
+    category: 'Backend & Cloud',
     image: 'assets/sentinel_gateway.jpg',
-    description: 'High-performance reverse proxy and microservices API gateway built with Python AsyncIO, Redis token-bucket rate limiting, JWT authentication, and dynamic route orchestration.',
+    description: 'Cloud-native asynchronous reverse proxy and microservices API gateway deployed on Kubernetes with Redis token-bucket rate limiting, JWT zero-trust auth, and dynamic route orchestration.',
     problem: 'Microservices architectures require centralized auth verification, distributed DDoS mitigation, and dynamic traffic routing without introducing latency bottlenecks.',
     solution: 'Built an async gateway leveraging Redis in-memory pipeline caching, non-blocking HTTP proxying, automated health checks, and cryptographic token verification.',
-    techStack: ['Python 3.11', 'FastAPI / AsyncIO', 'Redis', 'PostgreSQL', 'Docker Compose', 'Nginx', 'Prometheus'],
+    techStack: ['Python 3.11', 'FastAPI / AsyncIO', 'Kubernetes', 'Redis', 'PostgreSQL', 'Docker', 'Prometheus'],
     metrics: {
       throughput: '1.2M req/sec handling',
       latency: '< 4ms Overhead',
       security: 'Zero-Trust Token Auth',
-      uptime: '99.98% SLA'
+      uptime: '99.99% Cloud SLA'
     },
     demoUrl: '#',
     repoUrl: 'https://github.com/ArghyaMuk'
   },
-  visionedge: {
-    title: 'VisionEdge Edge AI Automation',
-    category: 'AI & IoT',
-    image: 'assets/visionedge_cv.jpg',
-    description: 'On-device edge computer vision pipeline for automated component inspection, defect detection, and GPIO relay actuation running on lightweight embedded hardware.',
-    problem: 'Cloud-based computer vision for factory assembly lines incurs prohibitive bandwidth costs and latency delays for real-time safety shutoffs.',
-    solution: 'Trained and quantized lightweight MobileNet/YOLO models running locally on Raspberry Pi with OpenCV video stream decoders and sub-50ms hardware relay trigger mechanisms.',
-    techStack: ['Python', 'OpenCV', 'PyTorch Mobile', 'Raspberry Pi 4/5', 'GPIO Controls', 'Flask REST API', 'MQTT'],
+  cloudops: {
+    title: 'CloudOps Kubernetes GitOps Engine',
+    category: 'Cloud & DevOps',
+    image: 'assets/cloudops_gitops.jpg',
+    description: 'End-to-end automated continuous integration and deployment (CI/CD) engine orchestrating containerized microservices and AI agent backends on Kubernetes (AKS) and Microsoft Azure.',
+    problem: 'Deploying high-load AI agent swarms and microservices requires zero-downtime rolling updates, automated horizontal pod scaling, and infrastructure as code.',
+    solution: 'Architected automated GitHub Actions CI/CD pipelines, multi-stage Docker builds, Helm charts for Kubernetes cluster deployments, and Prometheus/Grafana observability dashboards.',
+    techStack: ['Kubernetes (K8s)', 'Microsoft Azure (AKS)', 'Docker', 'CI/CD Pipelines', 'GitHub Actions', 'Linux', 'Python'],
     metrics: {
-      fps: '32 FPS Real-Time Inference',
-      latency: '38ms Inference Latency',
-      accuracy: '98.2% Defect Recall',
-      trigger: '< 15ms Hardware Actuation'
+      deploy: 'Zero-Downtime Rollouts',
+      scaling: 'Autoscaling Replicas (HPA)',
+      buildTime: '< 3 Min Pipeline Run',
+      reliability: '99.98% High Availability'
     },
     demoUrl: '#',
     repoUrl: 'https://github.com/ArghyaMuk'
@@ -493,6 +504,34 @@ document.addEventListener('DOMContentLoaded', () => {
       }).catch(() => {
         showToast('Email: ' + email);
       });
+    });
+  }
+
+  // 10. J.A.R.V.I.S. AI Core Shockwave & Protocol Activation
+  const jarvisCore = document.getElementById('jarvis-core-trigger');
+  if (jarvisCore) {
+    jarvisCore.addEventListener('click', () => {
+      // Spawn holographic shockwave ring
+      const shockwave = document.createElement('div');
+      shockwave.className = 'jarvis-shockwave';
+      jarvisCore.appendChild(shockwave);
+
+      setTimeout(() => {
+        if (shockwave.parentElement) shockwave.parentElement.removeChild(shockwave);
+      }, 950);
+
+      // Play audio feedback
+      if (window.soundFX) {
+        window.soundFX.playSuccessChirp();
+        setTimeout(() => window.soundFX.playTelemetryBeep(), 120);
+      }
+
+      showToast('🤖 J.A.R.V.I.S. CORE ACTIVE: Agentic AI, Multi-Cloud (AWS • Azure • GCP) & Terraform clusters fully operational.');
+
+      // Trigger animation pulse in studio
+      if (window.agenticStudioInstance) {
+        window.agenticStudioInstance.triggerBurstAction();
+      }
     });
   }
 });
