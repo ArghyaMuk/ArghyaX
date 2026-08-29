@@ -83,7 +83,9 @@
   <header class="navbar">
     <div class="container nav-container">
       <a href="#hero" class="nav-brand">
-        <div class="brand-icon">X</div>
+        <div class="brand-icon">
+          <img src="assets/dedsec_emblem.jpg" alt="DedSec Watch Dogs 2 Logo" class="brand-logo-img" />
+        </div>
         <div class="brand-name">Arghya<span>X</span></div>
       </a>
 
@@ -100,19 +102,12 @@
 
       <!-- Action Controls -->
       <div class="nav-actions">
-        <!-- Theme Toggle Button -->
-        <button id="theme-toggle-btn" class="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Theme">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
+        <!-- Watch Dogs 2 ctOS Bracket-Style Theme Switcher -->
+        <button id="theme-toggle-btn" class="theme-toggle-btn" title="Toggle ctOS Theme" aria-label="Toggle Theme">
+          <span class="theme-btn-bracket">[</span>
+          <span class="theme-icon">🌙</span>
+          <span class="theme-btn-text">DARK</span>
+          <span class="theme-btn-bracket">]</span>
         </button>
 
         <!-- Sound FX Toggle Button -->
@@ -218,9 +213,9 @@
         </div>
       </div>
 
-      <!-- Hero Right: Interactive J.A.R.V.I.S. Arc Reactor AI Core -->
+      <!-- Hero Right: Interactive Watch Dogs 2 DedSec Cyber Core -->
       <div class="hero-visual">
-        <div class="jarvis-container" id="jarvis-core-trigger" title="Click to Initialize J.A.R.V.I.S. Protocol">
+        <div class="jarvis-container" id="jarvis-core-trigger" title="Click to Trigger DedSec ctOS 2.0 Protocol">
           
           <!-- Concentric Holographic HUD Rings -->
           <div class="jarvis-hud-ring ring-outer"></div>
@@ -231,9 +226,9 @@
           <div class="jarvis-crosshair-h"></div>
           <div class="jarvis-crosshair-v"></div>
 
-          <!-- Central Core Arc Reactor Sphere -->
+          <!-- Central Core DedSec Cyber Sphere -->
           <div class="jarvis-core-sphere">
-            <img src="assets/jarvis_ai_core.jpg" alt="J.A.R.V.I.S. AI Core - Arghya Mukherjee" class="jarvis-core-img" />
+            <img src="assets/watchdogs_dedsec_logo.jpg" alt="Watch Dogs 2 DedSec Cyber Core - Arghya Mukherjee" class="jarvis-core-img" />
           </div>
 
           <!-- Orbital Telemetry HUD Nodes (Zero Overlap Guaranteed) -->
@@ -1090,23 +1085,27 @@
        10. J.A.R.V.I.S. NEURAL Q&A CHATBOT WIDGET
        ========================================================================= -->
   <!-- Floating Chatbot Launcher Trigger -->
-  <div id="jarvis-chat-trigger" class="jarvis-chat-trigger" title="Ask J.A.R.V.I.S. AI Assistant" aria-label="Open J.A.R.V.I.S. Chatbot">
+  <div id="jarvis-chat-trigger" class="jarvis-chat-trigger" title="Ask DedSec AI Assistant" aria-label="Open DedSec Chatbot">
     <div class="jarvis-trigger-ring"></div>
-    <div class="jarvis-trigger-icon">🤖</div>
+    <div class="jarvis-trigger-icon">
+      <img src="assets/dedsec_emblem.jpg" alt="DedSec Watch Dogs 2 AI" class="jarvis-trigger-img" />
+    </div>
     <div class="jarvis-trigger-badge"></div>
   </div>
 
   <!-- Chatbot Modal Window -->
-  <div id="jarvis-chat-modal" class="jarvis-chat-modal" role="dialog" aria-modal="true" aria-label="J.A.R.V.I.S. AI Chat">
+  <div id="jarvis-chat-modal" class="jarvis-chat-modal" role="dialog" aria-modal="true" aria-label="DedSec AI Chat">
     <!-- Header -->
     <div class="jarvis-chat-header">
       <div class="jarvis-header-left">
-        <div class="jarvis-header-avatar">🤖</div>
+        <div class="jarvis-header-avatar">
+          <img src="assets/dedsec_emblem.jpg" alt="DedSec Logo" class="jarvis-avatar-img" />
+        </div>
         <div class="jarvis-header-info">
-          <div class="jarvis-header-title">J.A.R.V.I.S. <span>AI</span></div>
+          <div class="jarvis-header-title">DEDSEC <span>AI</span></div>
           <div class="jarvis-header-status">
             <div class="pulse-dot"></div>
-            <span>Neural Q&amp;A Engine Online</span>
+            <span>ctOS Neural Q&amp;A Online</span>
           </div>
         </div>
       </div>
@@ -1142,12 +1141,79 @@
     </div>
   </div>
 
+  <!-- =========================================================================
+       11. WATCH DOGS 2 "KILL SWITCH" & ctOS SYSTEM BREACH OVERLAY
+       ========================================================================= -->
+  <!-- Floating Kill Switch Button (Bottom Left) -->
+  <button id="kill-switch-btn" class="kill-switch-btn" title="Initiate ctOS 2.0 Kill Switch Override" aria-label="Kill Switch">
+    <div class="ks-btn-brackets">[</div>
+    <span class="ks-btn-icon">☠️</span>
+    <span class="ks-btn-label">KILL SWITCH</span>
+    <span class="ks-btn-tag">0xDEAD</span>
+    <div class="ks-btn-brackets">]</div>
+  </button>
+
+  <!-- Fullscreen Watch Dogs 2 ctOS Breach Overlay -->
+  <div id="kill-switch-overlay" class="ks-hidden" role="alert" aria-live="assertive">
+    
+    <!-- Watch Dogs 2 ctOS San Francisco Holographic Map Backdrop -->
+    <div class="ks-map-backdrop">
+      <img src="assets/watchdogs_ctos_map.jpg" alt="ctOS San Francisco Map" class="ks-map-bg-img" />
+      <canvas id="ks-map-canvas"></canvas>
+    </div>
+
+    <!-- Background Scrolling Hex Matrix -->
+    <pre class="ks-hex-stream" id="ks-hex-stream"></pre>
+
+    <!-- ctOS Telemetry Readout Bars -->
+    <div class="ks-telemetry-hud top-left" id="ks-telemetry-coord">LAT: 37.7749° N // LON: 122.4194° W</div>
+    <div class="ks-telemetry-hud top-right" id="ks-telemetry-pct">CORRUPTION: 99.4%</div>
+    <div class="ks-telemetry-hud bottom-left">[ ctOS_KERNEL_BREACH_v2.0 ]</div>
+    <div class="ks-telemetry-hud bottom-right">ROOT_ACCESS: REVOKED</div>
+
+    <!-- Centered Lockout Frame -->
+    <div class="ks-lockout-frame">
+      <div class="ks-corner-bracket tl"></div>
+      <div class="ks-corner-bracket tr"></div>
+      <div class="ks-corner-bracket bl"></div>
+      <div class="ks-corner-bracket br"></div>
+
+      <!-- Hairline Reticle Lines -->
+      <div class="ks-reticle-line left"></div>
+      <div class="ks-reticle-line right"></div>
+
+      <!-- Small DedSec Logo Emblem -->
+      <img src="assets/watchdogs_fox_cyber_core.jpg" alt="DedSec Emblem" class="ks-lockout-emblem" />
+
+      <!-- Main Lockout Headline -->
+      <h1 class="ks-lockout-title" id="ks-lockout-title">CONTROL LOST</h1>
+
+      <!-- Monospace Subline -->
+      <div class="ks-subline-ctos">
+        <span class="ks-alert-pill">[!] SYSTEM COMPROMISED</span>
+        <span class="ks-status-label">// CONNECTION TERMINATED</span>
+        <span class="ks-cursor-block"></span>
+      </div>
+
+      <!-- Recovery Module (Stage 6) -->
+      <div class="ks-recovery-module">
+        <div class="ks-spinner-ring"></div>
+        <div class="ks-recovery-text" id="ks-recovery-text"></div>
+      </div>
+    </div>
+
+    <!-- Top-to-Bottom Sweep Scanbar -->
+    <div class="ks-scan-sweep"></div>
+  </div>
+
   <!-- Scripts -->
   <script src="js/watchdogs-loader.js"></script>
   <script src="js/canvas.js"></script>
   <script src="js/terminal.js"></script>
   <script src="js/agentic-simulator.js"></script>
   <script src="js/chatbot.js"></script>
+  <script src="js/ascii-glitch.js"></script>
+  <script src="js/kill-switch.js"></script>
   <script src="js/main.js"></script>
 </body>
 

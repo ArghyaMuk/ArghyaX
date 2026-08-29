@@ -48,6 +48,8 @@ class WatchDogsCyberGrid {
       '#ffe600'  // Electric Yellow
     ];
 
+    const asciiTags = ['0x7F', '0x1337', '0xDEAD', '0xCAFE', '0101', '0x00FF', '0xBEEF', '0xBLUME', '0xK8S', '0xAI'];
+
     for (let i = 0; i < this.targetCount; i++) {
       this.nodes.push({
         x: Math.random() * this.canvas.width,
@@ -57,6 +59,8 @@ class WatchDogsCyberGrid {
         radius: Math.random() * 2.5 + 1.2,
         color: colors[i % colors.length],
         id: 'NODE_' + Math.floor(Math.random() * 900 + 100),
+        asciiVal: asciiTags[i % asciiTags.length],
+        showAscii: i % 4 === 0,
         isSpecial: i % 8 === 0,
         pulse: Math.random() * Math.PI
       });
@@ -139,7 +143,7 @@ class WatchDogsCyberGrid {
       this.ctx.shadowBlur = 0;
     }
 
-    // 4. Update & Render Nodes
+    // 4. Update & Render Nodes & ASCII Values
     for (let i = 0; i < this.nodes.length; i++) {
       const n = this.nodes[i];
       n.pulse += 0.04;
@@ -177,6 +181,13 @@ class WatchDogsCyberGrid {
       this.ctx.fillStyle = n.color;
       this.ctx.fill();
 
+      // Render Floating ASCII / Hex String
+      if (n.showAscii) {
+        this.ctx.font = '9px "JetBrains Mono", monospace';
+        this.ctx.fillStyle = 'rgba(0, 245, 212, 0.45)';
+        this.ctx.fillText(n.asciiVal, n.x + 8, n.y - 6);
+      }
+
       // Special Watch Dogs ctOS Reticles on select nodes
       if (n.isSpecial) {
         const ringRadius = 8 + Math.sin(n.pulse) * 3;
@@ -188,7 +199,7 @@ class WatchDogsCyberGrid {
 
         // Node ID label
         this.ctx.font = '8px "JetBrains Mono", monospace';
-        this.ctx.fillStyle = 'rgba(0, 255, 102, 0.6)';
+        this.ctx.fillStyle = 'rgba(0, 255, 102, 0.7)';
         this.ctx.fillText(n.id, n.x + 10, n.y + 3);
       }
     }
@@ -202,8 +213,9 @@ class WatchDogsCyberGrid {
   }
 
   drawCtOSGrid() {
+    const isLight = document.body.getAttribute('data-theme') === 'light';
     const spacing = 120;
-    this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.015)';
+    this.ctx.strokeStyle = isLight ? 'rgba(0, 136, 163, 0.04)' : 'rgba(0, 240, 255, 0.02)';
     this.ctx.lineWidth = 1;
 
     for (let x = 0; x < this.canvas.width; x += spacing) {

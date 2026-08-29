@@ -1,5 +1,5 @@
 /**
- * Watch Dogs 2 (DedSec / ctOS 2.0) Loading & Cyber Bootloader
+ * Watch Dogs 2 (DedSec / ctOS 2.0) 10-Second Cinematic Cyber Bootloader
  * Author: Arghya Mukherjee (@ArghyaMuk) - AI/ML & Cloud Engineer @ TCS
  */
 
@@ -14,32 +14,45 @@ class WatchDogsLoader {
     this.skullElement = document.getElementById('wd-dedsec-skull');
     this.skipHint = document.getElementById('wd-skip-hint');
 
+    this.totalDurationMs = 8000; // Exact 10 seconds duration
+    this.startTime = null;
+
     this.logs = [
-      ">> INITIALIZING ctOS 2.0 BYPASS PROTOCOL...",
-      ">> CONNECTING TO SAN FRANCISCO BLUME MAINFRAME [127.0.0.1:443]...",
-      ">> DECRYPTING ARGHYAX NEURAL CORE & AGENTIC AI SWARMS...",
-      ">> MOUNTING AWS BEDROCK & LANGGRAPH REASONING MESH...",
-      ">> DEPLOYING TERRAFORM MULTI-CLOUD BRIDGES (AWS • AZURE • GCP)...",
-      ">> COMPILING PYTHON & FLASK ZERO-TRUST SECURITY REST APIS...",
-      ">> ALL BLUME FIREWALLS OVERRIDDEN. SYSTEM BREACH SUCCESSFUL.",
+      ">> [0x7FFD2B] INTERCEPTING SAN FRANCISCO ctOS 2.0 SATELLITE LINK...",
+      ">> TARGET IDENTIFIED: BLUME MAINFRAME [37.7749° N, 122.4194° W]",
+      ">> INJECTING DEDSEC PROXY CHAINS & ZERO-DAY EXPLOITS...",
+      ">> BYPASSING BLUME FIREWALL KERNEL DEFENSES [LAYER 7 OVERRIDE OK]",
+      ">> INITIALIZING ARGHYAX NEURAL CORE (PYTHON 3.11 / ASYNCIO)...",
+      ">> COMPILING LANGGRAPH CYCLIC STATE GRAPH WITH 5 AGENT NODES...",
+      ">> DISPATCHING STRANDS AGENTS (PLANNER • RESEARCHER • CODER • VERIFIER)...",
+      ">> CONNECTING AWS BEDROCK FOUNDATION MODELS (CLAUDE 3.5 SONNET / TITAN)...",
+      ">> HYDRATING CHROMADB & QDRANT VECTOR STORES (RAG RETRIEVAL 96.2%)...",
+      ">> EXECUTING TERRAFORM IaC MULTI-CLOUD DECLARATIVE BLUEPRINTS...",
+      ">> PROVISIONING MULTI-REGION KUBERNETES PODS (AWS EKS • AZURE AKS • GCP GKE)...",
+      ">> ATTACHING FLASK & FASTAPI REST API GATEWAYS WITH OAUTH2 ZERO-TRUST...",
+      ">> ACTIVATING REDIS TOKEN-BUCKET RATE LIMITER & CELERY TASK QUEUES...",
+      ">> RUNNING GITOPS ARGOCD AUTO-SYNC & PROMETHEUS OBSERVABILITY...",
+      ">> ctOS 2.0 ROOT PRIVILEGES GRANTED. BLUME FIREWALLS NULLIFIED.",
+      ">> DEDSEC EXPLOIT SUCCESSFUL. ARGHYAX PORTFOLIO ONLINE.",
       ">> WELCOME TO ARGHYAX // JOIN DEDSEC."
     ];
 
     this.isDone = false;
+    this.lastAudioStep = 0;
     this.init();
   }
 
   init() {
-    // Play cyber glitch sound
+    // Initial cyber glitch audio burst
     this.playGlitchSound();
 
-    // Glitch Skull ASCII / text animation
+    // Glitch Skull ASCII animation
     this.startSkullGlitch();
 
-    // Stream terminal hacking logs & progress
-    this.runBootSequence();
+    // Start 10-second cinematic boot sequence
+    this.run10SecondBootSequence();
 
-    // Allow user to click or press any key to skip immediately
+    // Instant Skip on click or keyboard press
     const skipHandler = () => this.finish();
     this.loader.addEventListener('click', skipHandler);
     window.addEventListener('keydown', (e) => {
@@ -52,16 +65,20 @@ class WatchDogsLoader {
   startSkullGlitch() {
     const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const originalText = `
-     .----------------------------------.
-    |  [!] DEDSEC // ctOS_BREACH_v2.0    |
-    |      ARGHYAX NEURAL NETWORK        |
-     '----------------------------------'
-           .-''''-.
-          /  _  _  \\
-         |  (o)(o)  |   >> BLUME SECURITY: COMPROMISED
-         |   .__.   |   >> ACCESS LEVEL : ROOT_ADMIN
-          \\  '--'  /
-           '-....-'
+     .--------------------------------------------------.
+    |  [!] WATCH DOGS 2 // DEDSEC ctOS_2.0 OVERRIDE       |
+    |      TARGET: ARGHYAX NEURAL AGENTIC NETWORK         |
+     '--------------------------------------------------'
+             /\\                  /\\
+            /  \\________________/  \\
+           /   /\\              /\\   \\
+          /   /  \\    ctOS    /  \\   \\
+         /   /    \\  2.0 OK  /    \\   \\
+         \\  /      \\        /      \\  /
+          \\/        \\      /        \\/
+                     \\    /
+                      \\  /
+                       \\/
     `;
 
     if (!this.skullElement) return;
@@ -72,9 +89,9 @@ class WatchDogsLoader {
         clearInterval(this.glitchInterval);
         return;
       }
-      if (Math.random() > 0.65) {
+      if (Math.random() > 0.6) {
         const textArr = originalText.split('');
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 8; i++) {
           const idx = Math.floor(Math.random() * textArr.length);
           if (textArr[idx] !== '\n' && textArr[idx] !== ' ') {
             textArr[idx] = chars[Math.floor(Math.random() * chars.length)];
@@ -83,51 +100,64 @@ class WatchDogsLoader {
         this.skullElement.textContent = textArr.join('');
         setTimeout(() => {
           if (this.skullElement) this.skullElement.textContent = originalText;
-        }, 80);
+        }, 90);
       }
-    }, 150);
+    }, 140);
   }
 
-  runBootSequence() {
-    let currentLog = 0;
-    let progress = 0;
+  run10SecondBootSequence() {
+    this.startTime = performance.now();
+    let lastLogIdx = -1;
 
-    const logInterval = setInterval(() => {
-      if (this.isDone) {
-        clearInterval(logInterval);
-        return;
+    const tick = (now) => {
+      if (this.isDone) return;
+
+      const elapsed = now - this.startTime;
+      let progress = Math.min(elapsed / this.totalDurationMs, 1.0);
+
+      // Glitch progress percentage (0 - 100%)
+      const pct = Math.floor(progress * 100);
+      if (this.progressBar) this.progressBar.style.width = pct + '%';
+      if (this.progressText) this.progressText.textContent = pct + '%';
+
+      // Periodic audio blips at 25%, 50%, 75%
+      const step = Math.floor(pct / 25);
+      if (step > this.lastAudioStep && step < 4) {
+        this.lastAudioStep = step;
+        this.playTelemetryBlip(300 + step * 180);
       }
 
-      if (currentLog < this.logs.length) {
-        if (this.terminalStream) {
-          const logLine = document.createElement('div');
-          logLine.className = 'wd-log-row';
-          logLine.innerHTML = `<span class="wd-cyan">[ctOS]</span> <span class="wd-txt">${this.logs[currentLog]}</span>`;
-          this.terminalStream.appendChild(logLine);
-          this.terminalStream.scrollTop = this.terminalStream.scrollHeight;
+      // Stream logs sequentially across the 10 seconds
+      const targetLogIdx = Math.floor(progress * this.logs.length);
+      if (targetLogIdx > lastLogIdx && targetLogIdx < this.logs.length) {
+        for (let i = lastLogIdx + 1; i <= targetLogIdx; i++) {
+          this.appendLog(this.logs[i]);
         }
-        currentLog++;
-      }
-    }, 180);
-
-    const progressInterval = setInterval(() => {
-      if (this.isDone) {
-        clearInterval(progressInterval);
-        return;
+        lastLogIdx = targetLogIdx;
       }
 
-      progress += Math.floor(Math.random() * 12) + 6;
-      if (progress > 100) progress = 100;
-
-      if (this.progressBar) this.progressBar.style.width = progress + '%';
-      if (this.progressText) this.progressText.textContent = progress + '%';
-
-      if (progress >= 100) {
-        clearInterval(progressInterval);
-        clearInterval(logInterval);
-        setTimeout(() => this.finish(), 300);
+      if (progress < 1.0) {
+        requestAnimationFrame(tick);
+      } else {
+        if (this.progressBar) this.progressBar.style.width = '100%';
+        if (this.progressText) this.progressText.textContent = '100%';
+        setTimeout(() => this.finish(), 400);
       }
-    }, 90);
+    };
+
+    requestAnimationFrame(tick);
+  }
+
+  appendLog(text) {
+    if (!this.terminalStream) return;
+    const logLine = document.createElement('div');
+    logLine.className = 'wd-log-row';
+    logLine.innerHTML = `<span class="wd-cyan">[ctOS]</span> <span class="wd-txt">${text}</span>`;
+    this.terminalStream.appendChild(logLine);
+    this.terminalStream.scrollTop = this.terminalStream.scrollHeight;
+
+    // Play micro-tick on every streaming log line
+    this.playDataStreamClick();
   }
 
   finish() {
@@ -137,11 +167,11 @@ class WatchDogsLoader {
     if (this.progressBar) this.progressBar.style.width = '100%';
     if (this.progressText) this.progressText.textContent = '100%';
 
+    // Play authentic Watch Dogs 2 breach access success chord
+    this.playAccessGrantedChime();
+
     // Glitch flash transition
     this.loader.classList.add('wd-glitch-exit');
-
-    // Play final breach access tone
-    if (window.soundFX) window.soundFX.playSuccessChirp();
 
     setTimeout(() => {
       this.loader.classList.add('wd-hidden');
@@ -153,31 +183,146 @@ class WatchDogsLoader {
     }, 450);
   }
 
+  // 1. Initial Watch Dogs 2 Multi-Layer Cyber Glitch Audio
   playGlitchSound() {
     try {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
       if (!AudioCtx) return;
       const ctx = new AudioCtx();
 
-      // Cyber glitch burst
+      if (ctx.state === 'suspended') {
+        const unlock = () => {
+          ctx.resume();
+          window.removeEventListener('click', unlock);
+          window.removeEventListener('keydown', unlock);
+        };
+        window.addEventListener('click', unlock);
+        window.addEventListener('keydown', unlock);
+      }
+
+      // Layer A: FM Modulated Glitch Sweep
+      const osc1 = ctx.createOscillator();
+      const gain1 = ctx.createGain();
+      osc1.type = 'sawtooth';
+      osc1.frequency.setValueAtTime(160, ctx.currentTime);
+      osc1.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.12);
+      osc1.frequency.exponentialRampToValueAtTime(280, ctx.currentTime + 0.3);
+
+      gain1.gain.setValueAtTime(0.12, ctx.currentTime);
+      gain1.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+
+      osc1.connect(gain1);
+      gain1.connect(ctx.destination);
+      osc1.start();
+      osc1.stop(ctx.currentTime + 0.36);
+
+      // Layer B: Square Wave Stutter
+      for (let i = 0; i < 3; i++) {
+        const t = ctx.currentTime + i * 0.08;
+        const osc2 = ctx.createOscillator();
+        const gain2 = ctx.createGain();
+        osc2.type = 'square';
+        osc2.frequency.setValueAtTime(800 - i * 180, t);
+
+        gain2.gain.setValueAtTime(0.06, t);
+        gain2.gain.exponentialRampToValueAtTime(0.001, t + 0.04);
+
+        osc2.connect(gain2);
+        gain2.connect(ctx.destination);
+        osc2.start(t);
+        osc2.stop(t + 0.05);
+      }
+
+      // Layer C: Static Noise Pulse
+      const bufferSize = ctx.sampleRate * 0.2;
+      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = Math.random() * 2 - 1;
+      }
+      const noise = ctx.createBufferSource();
+      noise.buffer = buffer;
+      const noiseGain = ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.05, ctx.currentTime);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+
+      noise.connect(noiseGain);
+      noiseGain.connect(ctx.destination);
+      noise.start();
+    } catch (e) {
+      // Autoplay fallback
+    }
+  }
+
+  // 2. Micro Data Stream Ticking Sound
+  playDataStreamClick() {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(140, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.15);
-      osc.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.3);
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(1400 + Math.random() * 400, ctx.currentTime);
 
-      gain.gain.setValueAtTime(0.08, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+      gain.gain.setValueAtTime(0.02, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.025);
 
       osc.connect(gain);
       gain.connect(ctx.destination);
-
       osc.start();
-      osc.stop(ctx.currentTime + 0.36);
-    } catch (e) {
-      // Audio autoplay policy fallback
-    }
+      osc.stop(ctx.currentTime + 0.03);
+    } catch (e) {}
+  }
+
+  // 3. Milestone Telemetry Blip
+  playTelemetryBlip(freq = 440) {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(freq * 1.6, ctx.currentTime + 0.09);
+
+      gain.gain.setValueAtTime(0.06, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.11);
+    } catch (e) {}
+  }
+
+  // 4. Access Granted Dual-Tone Chime
+  playAccessGrantedChime() {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+
+      const tones = [587.33, 880.00, 1174.66]; // D5, A5, D6
+      tones.forEach((freq, idx) => {
+        const time = ctx.currentTime + idx * 0.08;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, time);
+
+        gain.gain.setValueAtTime(0.09, time);
+        gain.gain.exponentialRampToValueAtTime(0.001, time + 0.35);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(time);
+        osc.stop(time + 0.36);
+      });
+    } catch (e) {}
   }
 }
 

@@ -9,8 +9,20 @@
 class SoundEffects {
   constructor() {
     this.audioCtx = null;
-    this.enabled = localStorage.getItem('sound_enabled') === 'true';
+    // Always ON by default unless explicitly disabled
+    this.enabled = localStorage.getItem('sound_enabled') !== 'false';
     this.updateToggleUI();
+
+    // Auto-resume AudioContext on first user interaction anywhere
+    const unlockAudio = () => {
+      this.initContext();
+      window.removeEventListener('pointerdown', unlockAudio);
+      window.removeEventListener('keydown', unlockAudio);
+      window.removeEventListener('touchstart', unlockAudio);
+    };
+    window.addEventListener('pointerdown', unlockAudio);
+    window.addEventListener('keydown', unlockAudio);
+    window.addEventListener('touchstart', unlockAudio);
   }
 
   initContext() {
@@ -18,7 +30,7 @@ class SoundEffects {
       const AudioContext = window.AudioContext || window.webkitAudioContext;
       this.audioCtx = new AudioContext();
     }
-    if (this.audioCtx.state === 'suspended') {
+    if (this.audioCtx && this.audioCtx.state === 'suspended') {
       this.audioCtx.resume();
     }
   }
@@ -181,34 +193,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Theme Toggle & Customizer
+  // 3. Watch Dogs 2 ctOS Dark / Light Theme Manager
   const themeBtn = document.getElementById('theme-toggle-btn');
-  const themes = ['obsidian', 'deep-space', 'matrix'];
-  let currentThemeIdx = 0;
-
-  // Restore saved theme
   const savedTheme = localStorage.getItem('arghyax_theme');
-  if (savedTheme && themes.includes(savedTheme)) {
-    if (savedTheme !== 'obsidian') {
-      document.body.setAttribute('data-theme', savedTheme);
+  const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  let currentTheme = savedTheme || (prefersLight ? 'light' : 'dark');
+
+  function applyTheme(theme, isUserClick = false) {
+    currentTheme = theme;
+    document.documentElement.setAttribute('data-theme', theme);
+    document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('arghyax_theme', theme);
+
+    if (themeBtn) {
+      const nextLabel = theme === 'dark' ? 'LIGHT' : 'DARK';
+      const nextIcon = theme === 'dark' ? '☀️' : '🌙';
+      themeBtn.innerHTML = `<span class="theme-btn-bracket">[</span> <span class="theme-icon">${nextIcon}</span> <span class="theme-btn-text">${nextLabel}</span> <span class="theme-btn-bracket">]</span>`;
+      themeBtn.setAttribute('title', `Active: ${theme.toUpperCase()} Mode. Click to switch to ${nextLabel} Mode`);
     }
-    currentThemeIdx = themes.indexOf(savedTheme);
+
+    if (isUserClick) {
+      if (window.soundFX) window.soundFX.playKeyClick();
+      // Digital glitch snap flash
+      document.body.classList.add('theme-glitch-snap');
+      setTimeout(() => {
+        document.body.classList.remove('theme-glitch-snap');
+      }, 180);
+      showToast(`[ctOS] THEME RECONFIGURED // ${theme.toUpperCase()} MODE ACTIVE`);
+    }
   }
+
+  // Initial apply
+  applyTheme(currentTheme, false);
 
   if (themeBtn) {
     themeBtn.addEventListener('click', () => {
-      if (window.soundFX) window.soundFX.playKeyClick();
-      currentThemeIdx = (currentThemeIdx + 1) % themes.length;
-      const nextTheme = themes[currentThemeIdx];
-
-      if (nextTheme === 'obsidian') {
-        document.body.removeAttribute('data-theme');
-      } else {
-        document.body.setAttribute('data-theme', nextTheme);
-      }
-      localStorage.setItem('arghyax_theme', nextTheme);
-
-      showToast(`Theme switched to ${nextTheme.replace('-', ' ').toUpperCase()}`);
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme, true);
     });
   }
 
