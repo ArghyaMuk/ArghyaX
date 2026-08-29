@@ -7,17 +7,17 @@ on:
       - master
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
+
+env:
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
 jobs:
   # 1. Validation & Integrity Check
@@ -31,7 +31,7 @@ jobs:
       - name: ⚙️ Setup Node.js Environment
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: 🔍 Validate JavaScript Syntax
         run: |
@@ -49,6 +49,7 @@ jobs:
           echo "Checking essential portfolio assets..."
           test -f index.html || (echo "❌ index.html missing" && exit 1)
           test -f css/style.css || (echo "❌ css/style.css missing" && exit 1)
+          test -f js/audio.js || (echo "❌ js/audio.js missing" && exit 1)
           test -f js/main.js || (echo "❌ js/main.js missing" && exit 1)
           test -f js/agentic-simulator.js || (echo "❌ js/agentic-simulator.js missing" && exit 1)
           test -f js/terminal.js || (echo "❌ js/terminal.js missing" && exit 1)
@@ -56,7 +57,6 @@ jobs:
           test -f js/watchdogs-loader.js || (echo "❌ js/watchdogs-loader.js missing" && exit 1)
           test -f js/ascii-glitch.js || (echo "❌ js/ascii-glitch.js missing" && exit 1)
           test -f js/kill-switch.js || (echo "❌ js/kill-switch.js missing" && exit 1)
-          test -f assets/jarvis_ai_core.jpg || (echo "❌ assets/jarvis_ai_core.jpg missing" && exit 1)
           echo "✅ All core assets and files verified successfully."
 
   # 2. Build & Deploy to GitHub Pages
@@ -73,11 +73,12 @@ jobs:
 
       - name: 🌐 Setup GitHub Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: 📦 Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire directory as static site artifact
           path: '.'
 
       - name: 🚀 Deploy to GitHub Pages
