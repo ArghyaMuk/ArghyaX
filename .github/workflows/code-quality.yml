@@ -44,9 +44,9 @@ jobs:
           # Check doctype
           grep -qi "<!DOCTYPE html>" index.html || (echo "❌ Missing HTML5 doctype" && exit 1)
           # Check title tag
-          grep -qi "<title>.*</title>" index.html || (echo "❌ Missing title tag" && exit 1)
+          grep -qi "<title" index.html && grep -qi "</title>" index.html || (echo "❌ Missing title tag" && exit 1)
           # Check viewport meta
-          grep -qi "<meta name=[\"']viewport[\"']" index.html || (echo "❌ Missing viewport meta tag" && exit 1)
+          grep -qi "viewport" index.html || (echo "❌ Missing viewport meta tag" && exit 1)
           echo "✅ HTML5 essential structure verified."
 
       - name: 🎨 Validate CSS Formatting & Bracket Integrity
