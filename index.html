@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta Tags -->
+  <title>Arghya Mukherjee (ArghyaX) | AI/ML & Cloud Engineer @ TCS | Agentic AI • LLMs & RAG • Kubernetes • AWS Bedrock</title>
+  <meta name="title"
+    content="Arghya Mukherjee (ArghyaX) | AI/ML & Cloud Engineer @ TCS | Agentic AI • LLMs & RAG • Kubernetes • AWS Bedrock" />
+  <meta name="description"
+    content="Portfolio of Arghya Mukherjee (ArghyaX) — AI/ML & Cloud Engineer @ TCS specializing in Agentic AI, LLMs & RAG, Python, LangGraph, LangChain, AWS Bedrock, Strands Agents, Azure, Kubernetes, and CI/CD." />
+  <meta name="keywords"
+    content="Arghya Mukherjee, ArghyaX, AI ML Cloud Engineer, TCS, Agentic AI, LLMs, RAG, Python, LangGraph, LangChain, AWS Bedrock, Strands Agents, Azure, Kubernetes, CI/CD, FastAPI, ChromaDB, Qdrant" />
+  <meta name="author" content="Arghya Mukherjee" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://github.com/ArghyaMuk" />
+  <meta property="og:title" content="Arghya Mukherjee (ArghyaX) | AI/ML & Cloud Engineer @ TCS" />
+  <meta property="og:description"
+    content="AI/ML & Cloud Engineer @ TCS | Agentic AI | LLMs & RAG | Python | LangGraph | LangChain | AWS Bedrock | Strands Agents | Azure | Kubernetes | CI/CD" />
+  <meta property="og:image" content="assets/profile_avatar.jpg" />
+
+  <!-- Google Fonts Preconnect & Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- =========================================================================
+       WATCH DOGS 2 (DEDSEC // ctOS 2.0) LOADING SCREEN OVERLAY
+       ========================================================================= -->
+  <div id="watchdogs-loader">
+    <div class="wd-loader-container">
+      
+      <!-- DedSec Glitch Header -->
+      <div class="wd-loader-header">
+        <div class="wd-logo-glitch">[ DEDSEC // ctOS_BREACH_v2.0 ]</div>
+        <div class="wd-status-pill">EXPLOIT_ACTIVE</div>
+      </div>
+
+      <!-- ASCII Skull Visual Box -->
+      <div class="wd-skull-box" id="wd-dedsec-skull"></div>
+
+      <!-- Live Terminal Hacking Stream -->
+      <div class="wd-terminal-stream" id="wd-terminal-stream"></div>
+
+      <!-- Glitch Progress Bar -->
+      <div class="wd-progress-section">
+        <div class="wd-progress-meta">
+          <span>INJECTING_ARGHYAX_PAYLOAD...</span>
+          <span id="wd-progress-pct">0%</span>
+        </div>
+        <div class="wd-progress-track">
+          <div class="wd-progress-fill" id="wd-progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="wd-skip-hint" id="wd-skip-hint">[ CLICK OR PRESS ANY KEY TO INITIALIZE ]</div>
+    </div>
+  </div>
+
+  <!-- Ambient Glow Backdrops -->
+  <div class="ambient-glow ambient-glow-1"></div>
+  <div class="ambient-glow ambient-glow-2"></div>
+
+  <!-- Interactive Watch Dogs 2 Cyber Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- =========================================================================
+       1. NAVIGATION HEADER
+       ========================================================================= -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-brand">
+        <div class="brand-icon">
+          <img src="assets/dedsec_emblem.jpg" alt="DedSec Watch Dogs 2 Logo" class="brand-logo-img" />
+        </div>
+        <div class="brand-name">Arghya<span>X</span></div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="nav-menu">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#terminal" class="nav-link">Terminal</a>
+        <a href="#agentic-studio" class="nav-link">Agentic Studio</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#journey" class="nav-link">Journey</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Action Controls -->
+      <div class="nav-actions">
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-toggle-btn" class="mobile-toggle-btn" title="Open Menu" aria-label="Open Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div id="mobile-nav" class="mobile-nav">
+    <a href="#hero" class="nav-link">Home</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#terminal" class="nav-link">Interactive Terminal</a>
+    <a href="#agentic-studio" class="nav-link">Agentic Studio</a>
+    <a href="#skills" class="nav-link">Technical Skills</a>
+    <a href="#journey" class="nav-link">Journey &amp; Milestones</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </div>
+
+  <!-- =========================================================================
+       2. HERO SECTION
+       ========================================================================= -->
+  <section id="hero" class="hero-section">
+    <div class="container hero-grid">
+
+      <!-- Hero Left: Content & Taglines -->
+      <div class="hero-content">
+        <div class="hero-status">
+          <div class="pulse-dot"></div>
+          <span>AI/ML &amp; Cloud Engineer @ TCS • Agentic AI &amp; Cloud Architecture</span>
+        </div>
+
+        <h1 class="hero-title">
+          Engineering Autonomous <br />
+          <span class="text-gradient">Agentic AI &amp; Cloud Systems</span>
+        </h1>
+
+        <!-- Animated Typewriter -->
+        <div class="hero-typewriter-container">
+          <span>&gt; </span>
+          <span id="hero-typewriter"></span>
+          <span class="typewriter-cursor"></span>
+        </div>
+
+        <p class="hero-description">
+          AI/ML Engineer building production-grade <strong>Agentic AI systems</strong> on <strong>AWS, Azure, and GCP</strong>. Experienced in <strong>Python, Flask, FastAPI, Terraform, Kubernetes, and GitOps</strong>, developing secure <strong>RESTful APIs</strong> that enable seamless access to cloud resources and automate complex infrastructure workflows. Focused on designing scalable, cloud-native platforms that transform intelligent AI solutions into reliable production systems.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="hero-cta-group">
+          <a href="#agentic-studio" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            Explore Agentic Studio
+          </a>
+
+          <a href="#skills" class="btn btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            Technical Skills Matrix
+          </a>
+
+          <a href="#terminal" class="btn btn-outline-glow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="4 17 10 11 4 5"></polyline>
+              <line x1="12" y1="19" x2="20" y2="19"></line>
+            </svg>
+            Launch CLI
+          </a>
+        </div>
+
+        <!-- Metric Counters Row -->
+        <div class="hero-stats-row">
+          <div class="stat-item">
+            <div class="stat-number">TCS<span>@</span></div>
+            <div class="stat-label">AI/ML &amp; Cloud Eng</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">99.9<span>%</span></div>
+            <div class="stat-label">Cloud SLA &amp; Uptime</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100<span>k+</span></div>
+            <div class="stat-label">Agentic LLM Tokens/sec</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Right: Interactive Watch Dogs 2 DedSec Cyber Core -->
+      <div class="hero-visual">
+        <div class="jarvis-container" id="jarvis-core-trigger" title="Click to Trigger DedSec ctOS 2.0 Protocol">
+          
+          <!-- Concentric Holographic HUD Rings -->
+          <div class="jarvis-hud-ring ring-outer"></div>
+          <div class="jarvis-hud-ring ring-middle"></div>
+          <div class="jarvis-hud-ring ring-inner"></div>
+          <div class="jarvis-radar-sweep"></div>
+          
+          <div class="jarvis-crosshair-h"></div>
+          <div class="jarvis-crosshair-v"></div>
+
+          <!-- Central Core DedSec Cyber Sphere -->
+          <div class="jarvis-core-sphere">
+            <img src="assets/watchdogs_fox_cyber_core.jpg" alt="Watch Dogs 2 DedSec Cyber Core - Arghya Mukherjee" class="jarvis-core-img" />
+          </div>
+
+          <!-- Orbital Telemetry HUD Nodes (Zero Overlap Guaranteed) -->
+          <div class="jarvis-hud-node node-tl">
+            <span class="hud-tag-dot"></span>
+            <div class="hud-tag-content">
+              <span class="hud-tag-label">CORE PROTOCOL</span>
+              <span class="hud-tag-val">LangGraph • Strands</span>
+            </div>
+          </div>
+
+          <div class="jarvis-hud-node node-tr">
+            <span class="hud-tag-dot"></span>
+            <div class="hud-tag-content">
+              <span class="hud-tag-label">MULTI-CLOUD</span>
+              <span class="hud-tag-val">AWS • Azure • GCP</span>
+            </div>
+          </div>
+
+          <div class="jarvis-hud-node node-bl">
+            <span class="hud-tag-dot"></span>
+            <div class="hud-tag-content">
+              <span class="hud-tag-label">INFRASTRUCTURE</span>
+              <span class="hud-tag-val">Terraform • K8s • GitOps</span>
+            </div>
+          </div>
+
+          <div class="jarvis-hud-node node-br">
+            <span class="hud-tag-dot"></span>
+            <div class="hud-tag-content">
+              <span class="hud-tag-label">SECURE BACKEND</span>
+              <span class="hud-tag-val">Python • Flask • REST</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       3. INTERACTIVE CLI TERMINAL (ArghyaOS)
+       ========================================================================= -->
+  <section id="terminal" class="terminal-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="4 17 10 11 4 5"></polyline>
+            <line x1="12" y1="19" x2="20" y2="19"></line>
+          </svg>
+          Interactive Developer Environment
+        </div>
+        <h2 class="section-title">ArghyaOS <span class="text-gradient">Interactive CLI</span></h2>
+        <p class="section-subtitle">Prefer command-line interfaces? Query skills, projects, Multi-Cloud architectures, Terraform IaC, and REST API layers right from the terminal.</p>
+      </div>
+
+      <!-- Terminal Window Component -->
+      <div class="glass-card terminal-container">
+        
+        <!-- Terminal Titlebar -->
+        <div class="terminal-header">
+          <div class="terminal-controls">
+            <div class="terminal-btn close"></div>
+            <div class="terminal-btn minimize"></div>
+            <div class="terminal-btn maximize"></div>
+          </div>
+          <div class="terminal-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            arghyax@tcs-cloud: ~ (bash / Python 3.11 / Terraform / Kubernetes)
+          </div>
+          <div class="badge badge-cyan">CLI v2.4</div>
+        </div>
+
+        <!-- Quick Command Chips Bar -->
+        <div class="terminal-actions-bar">
+          <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); margin-right: 0.25rem;">Quick Run:</span>
+          <button class="terminal-chip-btn" data-cmd="help">help</button>
+          <button class="terminal-chip-btn" data-cmd="about">about</button>
+          <button class="terminal-chip-btn" data-cmd="skills">skills</button>
+          <button class="terminal-chip-btn" data-cmd="agent">agent</button>
+          <button class="terminal-chip-btn" data-cmd="terraform">terraform</button>
+          <button class="terminal-chip-btn" data-cmd="gcp">gcp</button>
+          <button class="terminal-chip-btn" data-cmd="flask">flask</button>
+          <button class="terminal-chip-btn" data-cmd="cloud">cloud</button>
+          <button class="terminal-chip-btn" data-cmd="fetch">fetch</button>
+          <button class="terminal-chip-btn" data-cmd="clear">clear</button>
+        </div>
+
+        <!-- Terminal Output & Prompt -->
+        <div class="terminal-body">
+          <div id="terminal-output">
+            <div class="terminal-banner">
+   _____              .__               ____  ___
+  /  _  \_______ ____ |  |__ ___.__.____\   \/  /
+ /  /_\  \_  __ / ___\|  |  <   |  \__  \\     / 
+/    |    |  | \  \___|   Y  \___  |/ __ \/     \ 
+\____|__  |__|  \___  |___|  / ____(____  ___/\  \
+        \/          \/     \/\/         \/     \_/
+[ArghyaOS v2.4 (x86_64-cloud-native) - Type 'help' for commands]
+            </div>
+          </div>
+          
+          <div class="terminal-input-line">
+            <span class="terminal-prompt">arghya@tcs-cloud:~$</span>
+            <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" placeholder="Type a command (e.g. 'agent', 'projects', 'help')..." />
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. ABOUT & ARCHITECTURAL PILLARS
+       ========================================================================= -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg>
+          System Architect &amp; Cloud Specialist
+        </div>
+        <h2 class="section-title">Bridging Agentic Intelligence &amp; <span class="text-gradient">Cloud Systems</span></h2>
+        <p class="section-subtitle">Engineering stateful multi-agent workflows, scalable foundation model pipelines, and resilient cloud-native platforms.</p>
+      </div>
+
+      <div class="about-grid">
+        
+        <!-- Left: Bio Card -->
+        <div class="glass-card about-card">
+          <div>
+            <h3 class="about-card-title">Who I Am</h3>
+            <p>
+              I am an <strong>AI/ML &amp; Cloud Engineer at Tata Consultancy Services (TCS)</strong> with a deep passion for building autonomous agentic AI systems, enterprise RAG engines, and scalable cloud-native architectures.
+            </p>
+            <p>
+              My expertise spans orchestrating multi-agent state machines with <strong>LangGraph, LangChain &amp; Strands Agents</strong>, building generative AI pipelines on <strong>AWS Bedrock &amp; Azure</strong>, deploying containerized microservices on <strong>Kubernetes with automated CI/CD</strong>, and designing high-performance async <strong>Python microservices</strong>.
+            </p>
+          </div>
+
+          <div class="about-highlights">
+            <div class="highlight-box">
+              <h4>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Agentic Orchestration
+              </h4>
+              <p>Autonomous multi-agent swarms with LangGraph &amp; Strands Agents.</p>
+            </div>
+            <div class="highlight-box">
+              <h4>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Cloud-Native Scale
+              </h4>
+              <p>Resilient Kubernetes, AWS Bedrock, Azure &amp; automated CI/CD.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: 4 Engineering Pillars -->
+        <div class="pillars-grid">
+          
+          <div class="glass-card pillar-card">
+            <div class="pillar-icon">🤖</div>
+            <h4 class="pillar-title">Agentic AI &amp; Multi-Agent Swarms</h4>
+            <p class="pillar-desc">
+              Building stateful multi-agent workflows with LangGraph, LangChain, and Strands Agents with human-in-the-loop controls and dynamic tool execution.
+            </p>
+          </div>
+
+          <div class="glass-card pillar-card">
+            <div class="pillar-icon">☁️</div>
+            <h4 class="pillar-title">Cloud Native, Kubernetes &amp; CI/CD</h4>
+            <p class="pillar-desc">
+              Orchestrating microservices on Kubernetes, Azure &amp; AWS Bedrock with robust GitOps, automated CI/CD pipelines, Docker containers, and zero-downtime rollouts.
+            </p>
+          </div>
+
+          <div class="glass-card pillar-card">
+            <div class="pillar-icon">🧠</div>
+            <h4 class="pillar-title">LLMs, RAG &amp; AWS Bedrock</h4>
+            <p class="pillar-desc">
+              Enterprise Retrieval-Augmented Generation using AWS Bedrock foundation models, Chroma/Qdrant vector stores, and hybrid semantic rerankers.
+            </p>
+          </div>
+
+          <div class="glass-card pillar-card">
+            <div class="pillar-icon">⚡</div>
+            <h4 class="pillar-title">Async Python &amp; Distributed Backends</h4>
+            <p class="pillar-desc">
+              High-throughput asynchronous backends with FastAPI, AsyncIO, Celery, Redis caching, and resilient PostgreSQL microservice architectures.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. INTERACTIVE AGENTIC AI & RAG STUDIO (LangGraph & AWS Bedrock)
+       ========================================================================= -->
+  <section id="agentic-studio" class="iot-lab-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 16v-4M12 8h.01"></path>
+          </svg>
+          Live Architecture Schematics
+        </div>
+        <h2 class="section-title">Agentic AI &amp; Cloud <span class="text-gradient">Orchestration Studio</span></h2>
+        <p class="section-subtitle">Experience live stateful multi-agent execution, Multi-Cloud Terraform provisioning across AWS, Azure &amp; GCP, and secure Python/Flask REST API gateways.</p>
+      </div>
+
+      <!-- Architecture Mode Switcher Pills -->
+      <div class="arch-switcher-bar">
+        <button class="arch-pill-btn active" data-mode="langgraph">
+          <span>🤖</span> Agentic Swarm (LangGraph &amp; Strands)
+        </button>
+        <button class="arch-pill-btn" data-mode="multicloud">
+          <span>☁️</span> Multi-Cloud IaC (AWS, Azure, GCP &amp; Terraform)
+        </button>
+        <button class="arch-pill-btn" data-mode="apisec">
+          <span>🔒</span> Secure Python &amp; Flask API Gateway
+        </button>
+      </div>
+
+      <div class="iot-dashboard">
+
+        <!-- Left: Live Swarm Metrics Grid -->
+        <div class="iot-device-grid">
+
+          <div class="glass-card iot-metric-card">
+            <div class="iot-metric-header">
+              <span class="iot-metric-title">Active Swarm Nodes</span>
+              <span class="badge badge-purple">LangGraph</span>
+            </div>
+            <div class="iot-metric-val">
+              <span id="metric-agents">5</span>
+              <span class="iot-metric-unit">Agents</span>
+            </div>
+            <div class="iot-metric-status">
+              <div class="pulse-dot"></div>
+              <span>State Machine: Healthy</span>
+            </div>
+          </div>
+
+          <div class="glass-card iot-metric-card">
+            <div class="iot-metric-header">
+              <span class="iot-metric-title">LLM Token Velocity</span>
+              <span class="badge badge-cyan">AWS Bedrock</span>
+            </div>
+            <div class="iot-metric-val">
+              <span id="metric-tokens">1420</span>
+              <span class="iot-metric-unit">tok/sec</span>
+            </div>
+            <div class="iot-metric-status">
+              <div class="pulse-dot"></div>
+              <span>Claude 3.5 Streaming</span>
+            </div>
+          </div>
+
+          <div class="glass-card iot-metric-card">
+            <div class="iot-metric-header">
+              <span class="iot-metric-title">RAG Cosine Precision</span>
+              <span class="badge badge-emerald">Chroma / Qdrant</span>
+            </div>
+            <div class="iot-metric-val">
+              <span id="metric-rag">0.952</span>
+              <span class="iot-metric-unit">Score</span>
+            </div>
+            <div class="iot-metric-status">
+              <div class="pulse-dot"></div>
+              <span>Semantic Grounding OK</span>
+            </div>
+          </div>
+
+          <div class="glass-card iot-metric-card">
+            <div class="iot-metric-header">
+              <span class="iot-metric-title">Inference TTFT</span>
+              <span class="badge badge-amber">Azure / Bedrock</span>
+            </div>
+            <div class="iot-metric-val">
+              <span id="metric-lat">195</span>
+              <span class="iot-metric-unit">ms</span>
+            </div>
+            <div class="iot-metric-status">
+              <div class="pulse-dot"></div>
+              <span>Low Latency Gateway</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Real-time Multi-Agent Canvas & Log Stream -->
+        <div class="glass-card iot-stream-panel">
+          <div class="iot-stream-header">
+            <div class="iot-stream-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+              LangGraph Multi-Agent Mesh (Stateful Cyclic Graph)
+            </div>
+            <div class="badge badge-emerald">Bedrock: Connected</div>
+          </div>
+
+          <!-- Dynamic Graph Canvas -->
+          <div class="iot-graph-container" style="height: 200px;">
+            <canvas id="agentic-mesh-canvas"></canvas>
+          </div>
+
+          <!-- Live Multi-Agent Execution Logger -->
+          <div class="iot-log-terminal" id="agentic-log-terminal">
+            <div class="iot-log-row">
+              <span class="iot-log-time">[INIT]</span>
+              <span class="iot-log-topic term-purple">[LANGGRAPH]</span>
+              <span class="iot-log-payload">Compiled state graph with 5 agent nodes + checkpointer.</span>
+            </div>
+          </div>
+
+          <!-- Interactive Studio Controls -->
+          <div class="iot-controls-row">
+            <button id="agent-dispatch-swarm" class="btn btn-primary btn-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              Dispatch Agent Swarm
+            </button>
+
+            <button id="agent-trigger-rag" class="btn btn-secondary btn-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              Trigger Bedrock RAG
+            </button>
+
+            <button id="agent-reset-state" class="btn btn-secondary btn-sm">
+              Reset State
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. TECHNICAL SKILLS & PROFICIENCY MATRIX
+       ========================================================================= -->
+  <section id="skills" class="skills-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+            </polygon>
+          </svg>
+          Technical Competencies
+        </div>
+        <h2 class="section-title">Technical <span class="text-gradient">Skills Matrix</span></h2>
+        <p class="section-subtitle">Core expertise across Agentic AI, Enterprise Cloud, Distributed Python Backends, and
+          I <!-- Skills Navigation Tabs -->
+        <div class="skills-tabs">
+          <button class="skills-tab-btn active" data-target="skills-agentic">
+            <span>🤖</span> Agentic AI, LLMs &amp; RAG
+          </button>
+          <button class="skills-tab-btn" data-target="skills-cloud">
+            <span>☁️</span> Cloud, Kubernetes &amp; CI/CD
+          </button>
+          <button class="skills-tab-btn" data-target="skills-backend">
+            <span>⚡</span> Python &amp; Microservices
+          </button>
+          <button class="skills-tab-btn" data-target="skills-llmops">
+            <span>🔬</span> LLMOps &amp; Vector DBs
+          </button>
+        </div>
+
+        <!-- Tab Panes -->
+        <div class="skills-panes-container">
+
+          <!-- Pane 1: Agentic AI, LLMs & RAG -->
+          <div id="skills-agentic" class="skills-tab-pane active">
+
+            <div class="glass-card skill-card">
+              <div class="skill-header">
+                <div class="skill-name">
+                  <span>🕸️</span> LangGraph &amp; Multi-Agent Swarms
+                </div>
+                <div class="skill-percent">95%</div>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" style="width: 95%;"></div>
+              </div>
+              <div class="skill-details">Stateful multi-agent graphs, cyclical agent flows, memory management, and
+                dynamic tool orchestration.</div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <div class="skill-header">
+                <div class="skill-name">
+                  <span>🦜</span> LangChain &amp; Strands Agents
+                </div>
+                <div class="skill-percent">92%</div>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" style="width: 92%;"></div>
+              </div>
+              <div class="skill-details">Autonomous agent reasoning, Strands framework workflows, custom tools, and
+                structured JSON output parsing.</div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <div class="skill-header">
+                <div class="skill-name">
+                  <span>🧠</span> LLMs &amp; Enterprise RAG Pipelines
+                </div>
+                <div class="skill-percent">94%</div>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" style="width: 94%;"></div>
+              </div>
+              <div class="skill-details">Dense vector embeddings, hybrid semantic retrieval, reciprocal rank fusion
+                (RRF), and hallucination guardrails.</div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <div class="skill-header">
+                <div class="skill-name">
+                  <span>🔍</span> Prompt Engineering &amp; Evaluation
+                </div>
+                <div class="skill-percent">92%</div>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" style="width: 92%;"></div>
+              </div>
+              <div class="skill-details">Few-shot prompting, chain-of-thought, automated LLM-as-a-judge benchmarking,
+                and token cost optimization.</div>
+            </div>
+
+          </div>
+
+          <!-- Pane 2: Cloud, Kubernetes, Terraform & GitOps -->
+          <div id="skills-cloud" class="skills-tab-pane">
+
+            <div class="glass-card skill-card">
+              <div class="skill-header">
+                <div class="skill-name">
+                  <span>🏗️</span> Terraform &amp; Infrastructure as Code (IaC)
+                </div>
+                <div class="skill-percent">94%</div>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" style="width: 94%;"></div>
+              </div>
+              <div class="skill-details">Reusable HCL modules, remote state locking, tfsec security scanning, and automated cloud resource provisioning.</div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <div class="skill-header">
+                <div class="skill-name">
+                  <span>☁️</span> Multi-Cloud (AWS, Azure &amp; GCP)
+                </div>
+                <div class="skill-percent">94%</div>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" style="width: 94%;"></div>
+              </div>
+              <div class="skill-details">AWS Bedrock / EKS, Azure AKS &amp; OpenAI Service, Google Cloud GKE &amp; Vertex AI platform integration.</div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <div class="skill-header">
+                <div class="skill-name">
+                  <span>☸️</span> Kubernetes (K8s) &amp; GitOps
+                </div>
+                <div class="skill-percent">92%</div>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" style="width: 92%;"></div>
+              </div>
+              <div class="skill-details">Pod scheduling, Helm charts, ArgoCD automated sync, ConfigMaps, Secrets, and Horizontal Pod Autoscaling (HPA).</div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <div class="skill-header">
+                <div class="skill-name">
+                  <span>🔄</span> CI/CD Pipelines &amp; Docker
+                </div>
+                <div class="skill-percent">94%</div>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" style="width: 94%;"></div>
+              </div>
+              <div class="skill-details">Automated GitHub Actions pipelines, multi-stage container builds, automated unit/integration tests, and zero-downtime rollouts.</div>
+            </div>
+
+          </div>
+
+          <!-- Pane 3: Python, Flask & Secure Cloud APIs -->
+          <div id="skills-backend" class="skills-tab-pane">
+
+            <div class="glass-card skill-card">
+              <div class="skill-header">
+                <div class="skill-name">
+                  <span>🐍</span> Python, Flask &amp; FastAPI RESTful APIs
+                </div>
+                <div class="skill-percent">96%</div>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" style="width: 96%;"></div>
+              </div>
+              <div class="skill-details">Modular Flask blueprints, async FastAPI endpoints, Pydantic v2 validation, OpenAPI documentation, and microservice brokers.</div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <div class="skill-header">
+                <div class="skill-name">
+                  <span>🔒</span> Cloud API Security &amp; Zero-Trust
+                </div>
+                <div class="skill-percent">92%</div>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" style="width: 92%;"></div>
+              </div>
+              <div class="skill-details">OAuth2.0, JWT cryptographic validation, RBAC permission scopes, secure IAM resource access, and rate limiting.</div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <div class="skill-header">
+                <div class="skill-name">
+                  <span>⚡</span> Redis In-Memory &amp; Task Queues (Celery)
+                </div>
+                <div class="skill-percent">90%</div>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" style="width: 90%;"></div>
+              </div>
+              <div class="skill-details">Distributed caching, token-bucket rate limiters, pub/sub channels, and background asynchronous task distribution.</div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <div class="skill-header">
+                <div class="skill-name">
+                  <span>🐘</span> PostgreSQL &amp; SQLAlchemy ORM
+                </div>
+                <div class="skill-percent">90%</div>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" style="width: 90%;"></div>
+              </div>
+              <div class="skill-details">Async relational database design, query optimization, connection pooling with asyncpg, and Alembic migrations.</div>
+            </div>
+
+          </div>
+
+          <!-- Pane 4: LLMOps & Vector Databases -->
+          <div id="skills-llmops" class="skills-tab-pane">
+
+            <div class="glass-card skill-card">
+              <div class="skill-header">
+                <div class="skill-name">
+                  <span>🔍</span> Vector Stores (ChromaDB &amp; Qdrant)
+                </div>
+                <div class="skill-percent">94%</div>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" style="width: 94%;"></div>
+              </div>
+              <div class="skill-details">High-dimensional similarity indexing, metadata filtering, chunking strategies,
+                and persistent collections.</div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <div class="skill-header">
+                <div class="skill-name">
+                  <span>📚</span> AWS Bedrock Knowledge Bases
+                </div>
+                <div class="skill-percent">92%</div>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" style="width: 92%;"></div>
+              </div>
+              <div class="skill-details">Managed vector index synchronization, chunking strategies, automated metadata
+                tagging, and Titan embeddings.</div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <div class="skill-header">
+                <div class="skill-name">
+                  <span>🛡️</span> RAG Guardrails &amp; Safety
+                </div>
+                <div class="skill-percent">90%</div>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" style="width: 90%;"></div>
+              </div>
+              <div class="skill-details">Output validation, citation verification, groundness checks, hallucination
+                mitigation, and PII masking.</div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <div class="skill-header">
+                <div class="skill-name">
+                  <span>🔥</span> PyTorch &amp; Hugging Face
+                </div>
+                <div class="skill-percent">86%</div>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" style="width: 86%;"></div>
+              </div>
+              <div class="skill-details">Sentence-transformers, dense vector encoders, tokenization pipelines, and model
+                evaluation benchmarks.</div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+  </section>
+
+  <!-- =========================================================================
+       8. JOURNEY & MILESTONES TIMELINE
+       ========================================================================= -->
+  <section id="journey" class="journey-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 14 14"></polyline>
+          </svg>
+          Roadmap &amp; Milestones
+        </div>
+        <h2 class="section-title">The Engineering <span class="text-gradient">Journey</span></h2>
+        <p class="section-subtitle">Professional experience at TCS, enterprise Agentic AI deployments, and continuous
+          cloud innovation.</p>
+      </div>
+
+      <div class="timeline-wrapper">
+
+        <!-- Flagship TCS Role -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="glass-card timeline-card">
+            <div class="timeline-meta">
+              <h3 class="timeline-role">AI/ML &amp; Cloud Engineer</h3>
+              <span class="timeline-date">Tata Consultancy Services (TCS) • 2025 — Present</span>
+            </div>
+            <div class="timeline-org">Enterprise Agentic AI &amp; Cloud Systems</div>
+            <p class="timeline-desc">
+              Designing and deploying enterprise-scale <strong>Agentic AI workflows</strong> using <strong>LangGraph,
+                LangChain &amp; Strands Agents</strong>. Implementing generative AI pipelines and RAG architectures on
+              <strong>AWS Bedrock &amp; Azure</strong>. Managing containerized microservice deployments on
+              <strong>Kubernetes (K8s)</strong> with automated <strong>CI/CD pipelines</strong> and robust Python async
+              backends.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="glass-card timeline-card">
+            <div class="timeline-meta">
+              <h3 class="timeline-role">Agentic AI &amp; Enterprise RAG Systems</h3>
+              <span class="timeline-date">2024 — 2025</span>
+            </div>
+            <div class="timeline-org">Multi-Agent Systems &amp; Vector Databases</div>
+            <p class="timeline-desc">
+              Architected autonomous state machine agents with LangGraph, dense vector retrieval pipelines with ChromaDB
+              and Qdrant, and streaming API endpoints with FastAPI.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="glass-card timeline-card">
+            <div class="timeline-meta">
+              <h3 class="timeline-role">Cloud Microservices &amp; Python Distributed Backends</h3>
+              <span class="timeline-date">2023 — 2024</span>
+            </div>
+            <div class="timeline-org">Asynchronous Infrastructure &amp; APIs</div>
+            <p class="timeline-desc">
+              Built asynchronous API gateways with Redis token-bucket rate limiters, Docker containerization, PostgreSQL
+              schemas, and automated CI/CD deployment pipelines.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       9. CONTACT & INTERACTIVE DISPATCHER
+       ========================================================================= -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          Get in Touch
+        </div>
+        <h2 class="section-title">Let's Build Something <span class="text-gradient">Exceptional</span></h2>
+        <p class="section-subtitle">Have a project, Agentic AI challenge, or cloud architecture inquiry? Let's connect.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+
+        <!-- Left: Contact Channels -->
+        <div class="glass-card contact-info-card">
+          <div>
+            <h3 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem;">
+              Direct Channels</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem;">
+              Feel free to reach out via email or connect with me on GitHub. I'm actively open for innovative Agentic AI
+              architectures, cloud migrations, and technical collaborations.
+            </p>
+
+            <div class="contact-channels">
+
+              <a href="https://github.com/ArghyaMuk" target="_blank" class="channel-item">
+                <div class="channel-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                    </path>
+                  </svg>
+                </div>
+                <div class="channel-content">
+                  <span class="channel-label">GitHub Profile</span>
+                  <span class="channel-value">github.com/ArghyaMuk</span>
+                </div>
+              </a>
+
+              <div class="channel-item" id="copy-email-btn" style="cursor: pointer;">
+                <div class="channel-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div class="channel-content">
+                  <span class="channel-label">Direct Email (Click to Copy)</span>
+                  <span class="channel-value">arghyamukherjee06@gmail.com</span>
+                </div>
+              </div>
+
+              <div class="channel-item">
+                <div class="channel-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                </div>
+                <div class="channel-content">
+                  <span class="channel-label">Discord / Community</span>
+                  <span class="channel-value">ArghyaX#dev</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div
+            style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-emerald); display: flex; align-items: center; gap: 0.5rem;">
+            <div class="pulse-dot"></div>
+            Average Response Time: &lt; 12 Hours
+          </div>
+        </div>
+
+        <!-- Right: Glassmorphic Message Form -->
+        <div class="glass-card contact-form-card">
+          <form id="contact-form" class="contact-form">
+
+            <div class="form-group">
+              <label for="contact-name" class="form-label">Your Name / Organization</label>
+              <input type="text" id="contact-name" class="form-control" placeholder="e.g. Alex Morgan" required />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email" class="form-label">Email Address</label>
+              <input type="email" id="contact-email" class="form-control" placeholder="e.g. alex@company.com"
+                required />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message" class="form-label">Project Scope &amp; Message</label>
+              <textarea id="contact-message" class="form-control"
+                placeholder="Tell me about your Agentic AI needs, cloud infrastructure, or collaboration ideas..."
+                required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+              Send Message
+            </button>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       10. FOOTER
+       ========================================================================= -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <!-- Love from India & Map Badge -->
+        <div class="footer-india-badge">
+          <svg class="india-map-icon" viewBox="0 0 100 115" width="28" height="32" fill="none" stroke="currentColor">
+            <path d="M48 5 L55 12 L62 18 L60 25 L68 28 L72 32 L82 34 L88 38 L95 38 L92 46 L85 48 L80 44 L75 48 L76 54 L82 56 L86 52 L90 54 L92 60 L85 64 L80 62 L74 66 L70 60 L68 64 L65 72 L62 80 L58 88 L52 98 L50 106 L48 106 L46 98 L40 85 L35 76 L32 70 L28 66 L22 66 L18 62 L15 56 L12 50 L16 46 L24 46 L28 40 L35 34 L38 28 L42 22 L45 14 Z" fill="rgba(0, 240, 255, 0.15)" stroke="#00F0FF" stroke-width="1.8" stroke-linejoin="round" />
+            <circle cx="50" cy="55" r="3" fill="#FF9933" />
+            <circle cx="50" cy="55" r="6" stroke="#00FF66" stroke-width="1" stroke-dasharray="2,2" class="pulse-india" />
+          </svg>
+          <span class="footer-love-text">Made with <span class="heart-pulse">❤️</span> from <strong>India</strong> 🇮🇳</span>
+        </div>
+
+        <!-- ctOS Live User Public IP & Location HUD -->
+        <div class="ctos-ip-monitor" id="ctos-ip-monitor">
+          <span class="traffic-bracket">[</span>
+          <span class="traffic-icon">🌐</span>
+          <span class="traffic-label">YOUR PUBLIC IP:</span>
+          <span id="user-public-ip" class="traffic-value">Scanning...</span>
+          <span class="traffic-sep">|</span>
+          <span class="traffic-label">LOCATION:</span>
+          <span id="user-location" class="traffic-value">Detecting...</span>
+          <span class="traffic-bracket">]</span>
+        </div>
+      </div>
+
+      <div class="footer-socials">
+        <a href="https://github.com/ArghyaMuk" target="_blank" class="social-btn" title="GitHub" aria-label="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+            </path>
+          </svg>
+        </a>
+        <a href="#hero" class="social-btn" title="Back to top" aria-label="Back to top">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       10. J.A.R.V.I.S. NEURAL Q&A CHATBOT WIDGET
+       ========================================================================= -->
+  <!-- Floating Chatbot Launcher Trigger -->
+  <div id="jarvis-chat-trigger" class="jarvis-chat-trigger" title="Open DedSec ctOS 2.0 Profiler" aria-label="Open DedSec Chatbot">
+    <div class="jarvis-trigger-ring"></div>
+    <div class="jarvis-trigger-icon">
+      <img src="assets/dedsec_emblem.jpg" alt="DedSec Watch Dogs 2 AI" class="jarvis-trigger-img" />
+    </div>
+    <div class="jarvis-trigger-badge"></div>
+  </div>
+
+  <!-- Chatbot Modal Window -->
+  <div id="jarvis-chat-modal" class="jarvis-chat-modal" role="dialog" aria-modal="true" aria-label="DedSec ctOS AI Chat">
+    <!-- Header -->
+    <div class="jarvis-chat-header">
+      <div class="jarvis-header-left">
+        <div class="jarvis-header-avatar">
+          <img src="assets/dedsec_emblem.jpg" alt="DedSec Logo" class="jarvis-avatar-img" />
+        </div>
+        <div class="jarvis-header-info">
+          <div class="jarvis-header-title">DEDSEC // <span>ctOS 2.0</span></div>
+          <div class="jarvis-header-status">
+            <div class="pulse-dot"></div>
+            <span>NEURAL PROFILER ACTIVE</span>
+          </div>
+        </div>
+      </div>
+      <div class="jarvis-header-actions">
+        <button id="jarvis-chat-clear" class="jarvis-action-btn" title="Clear Chat History" aria-label="Clear chat">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+        </button>
+        <button id="jarvis-chat-close" class="jarvis-action-btn" title="Minimize Chat" aria-label="Close chat">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Suggestion Chips -->
+    <div class="jarvis-quick-chips" id="jarvis-quick-chips">
+      <button class="jarvis-chip" data-query="Who is Arghya Mukherjee?">👤 Who is Arghya?</button>
+      <button class="jarvis-chip" data-query="Explain his Agentic AI &amp; LangGraph experience">🤖 Agentic AI &amp; LangGraph</button>
+      <button class="jarvis-chip" data-query="What is his role at TCS?">💼 TCS Role</button>
+      <button class="jarvis-chip" data-query="How does his Multi-Cloud &amp; Terraform architecture work?">☁️ Multi-Cloud &amp; IaC</button>
+      <button class="jarvis-chip" data-query="Tell me about his Python &amp; Flask REST API skills">🐍 Python &amp; Flask APIs</button>
+      <button class="jarvis-chip" data-query="How can I contact Arghya?">📬 Contact &amp; Hire</button>
+    </div>
+
+    <!-- Messages Container -->
+    <div class="jarvis-messages-body" id="jarvis-messages-body"></div>
+
+    <!-- Footer Input Bar -->
+    <div class="jarvis-chat-footer">
+      <input type="text" id="jarvis-chat-input" class="jarvis-chat-input" placeholder="> Enter ctOS query (e.g. 'skills', 'agents', 'experience', 'contact')..." autocomplete="off" spellcheck="false" />
+      <button id="jarvis-chat-send" class="jarvis-chat-send" title="Send Message" aria-label="Send message">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       11. WATCH DOGS 2 "KILL SWITCH" & ctOS SYSTEM BREACH OVERLAY
+       ========================================================================= -->
+  <!-- Floating Kill Switch Button (Bottom Left) -->
+  <button id="kill-switch-btn" class="kill-switch-btn" title="Initiate ctOS 2.0 Kill Switch Override" aria-label="Kill Switch">
+    <div class="ks-btn-brackets">[</div>
+    <span class="ks-btn-icon">☠️</span>
+    <span class="ks-btn-label">KILL SWITCH</span>
+    <span class="ks-btn-tag">0xDEAD</span>
+    <div class="ks-btn-brackets">]</div>
+  </button>
+
+  <!-- Fullscreen Watch Dogs 2 ctOS Breach Overlay -->
+  <div id="kill-switch-overlay" class="ks-hidden" role="alert" aria-live="assertive">
+    
+    <!-- Watch Dogs 2 ctOS San Francisco Holographic Map Backdrop -->
+    <div class="ks-map-backdrop">
+      <img src="assets/watchdogs_ctos_map.jpg" alt="ctOS San Francisco Map" class="ks-map-bg-img" />
+      <canvas id="ks-map-canvas"></canvas>
+    </div>
+
+    <!-- Background Scrolling Hex Matrix -->
+    <pre class="ks-hex-stream" id="ks-hex-stream"></pre>
+
+    <!-- ctOS Telemetry Readout Bars -->
+    <div class="ks-telemetry-hud top-left" id="ks-telemetry-coord">LAT: 37.7749° N // LON: 122.4194° W</div>
+    <div class="ks-telemetry-hud top-right" id="ks-telemetry-pct">CORRUPTION: 99.4%</div>
+    <div class="ks-telemetry-hud bottom-left">[ ctOS_KERNEL_BREACH_v2.0 ]</div>
+    <div class="ks-telemetry-hud bottom-right">ROOT_ACCESS: REVOKED</div>
+
+    <!-- Centered Lockout Frame -->
+    <div class="ks-lockout-frame">
+      <div class="ks-corner-bracket tl"></div>
+      <div class="ks-corner-bracket tr"></div>
+      <div class="ks-corner-bracket bl"></div>
+      <div class="ks-corner-bracket br"></div>
+
+      <!-- Hairline Reticle Lines -->
+      <div class="ks-reticle-line left"></div>
+      <div class="ks-reticle-line right"></div>
+
+      <!-- Small DedSec Logo Emblem -->
+      <img src="assets/watchdogs_fox_cyber_core.jpg" alt="DedSec Emblem" class="ks-lockout-emblem" />
+
+      <!-- Main Lockout Headline -->
+      <h1 class="ks-lockout-title" id="ks-lockout-title">CONTROL LOST</h1>
+
+      <!-- Monospace Subline -->
+      <div class="ks-subline-ctos">
+        <span class="ks-alert-pill">[!] SYSTEM COMPROMISED</span>
+        <span class="ks-status-label">// CONNECTION TERMINATED</span>
+        <span class="ks-cursor-block"></span>
+      </div>
+
+      <!-- Recovery Module (Stage 6) -->
+      <div class="ks-recovery-module">
+        <div class="ks-spinner-ring"></div>
+        <div class="ks-recovery-text" id="ks-recovery-text"></div>
+      </div>
+    </div>
+
+    <!-- Top-to-Bottom Sweep Scanbar -->
+    <div class="ks-scan-sweep"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/watchdogs-loader.js"></script>
+  <script src="js/canvas.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/agentic-simulator.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/ascii-glitch.js"></script>
+  <script src="js/kill-switch.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
