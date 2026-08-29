@@ -226,7 +226,7 @@ class WatchDogsLoader {
       osc1.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.12);
       osc1.frequency.exponentialRampToValueAtTime(280, ctx.currentTime + 0.3);
 
-      gain1.gain.setValueAtTime(0.2, ctx.currentTime);
+      gain1.gain.setValueAtTime(0.35, ctx.currentTime);
       gain1.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
 
       osc1.connect(gain1);
@@ -242,7 +242,7 @@ class WatchDogsLoader {
         osc2.type = 'square';
         osc2.frequency.setValueAtTime(900 - i * 160, t);
 
-        gain2.gain.setValueAtTime(0.12, t);
+        gain2.gain.setValueAtTime(0.25, t);
         gain2.gain.exponentialRampToValueAtTime(0.001, t + 0.04);
 
         osc2.connect(gain2);
@@ -261,7 +261,7 @@ class WatchDogsLoader {
       const noise = ctx.createBufferSource();
       noise.buffer = buffer;
       const noiseGain = ctx.createGain();
-      noiseGain.gain.setValueAtTime(0.08, ctx.currentTime);
+      noiseGain.gain.setValueAtTime(0.20, ctx.currentTime);
       noiseGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
 
       noise.connect(noiseGain);
@@ -281,7 +281,7 @@ class WatchDogsLoader {
       osc.type = 'square';
       osc.frequency.setValueAtTime(1400 + Math.random() * 500, ctx.currentTime);
 
-      gain.gain.setValueAtTime(0.04, ctx.currentTime);
+      gain.gain.setValueAtTime(0.08, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.025);
 
       osc.connect(gain);
@@ -303,7 +303,7 @@ class WatchDogsLoader {
       osc.frequency.setValueAtTime(freq, ctx.currentTime);
       osc.frequency.exponentialRampToValueAtTime(freq * 1.6, ctx.currentTime + 0.09);
 
-      gain.gain.setValueAtTime(0.08, ctx.currentTime);
+      gain.gain.setValueAtTime(0.20, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
 
       osc.connect(gain);
