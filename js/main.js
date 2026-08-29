@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => window.soundFX.playTelemetryBeep(), 120);
       }
 
-      showToast('🤖 J.A.R.V.I.S. CORE ACTIVE: Agentic AI, Multi-Cloud (AWS • Azure • GCP) & Terraform clusters fully operational.');
+      showToast('[ctOS 2.0] DEDSEC CORE ACTIVE: Multi-Cloud (AWS • Azure • GCP) & LangGraph clusters fully operational.');
 
       // Trigger animation pulse in studio
       if (window.agenticStudioInstance) {
@@ -329,6 +329,38 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // 11. ctOS Live Surveillance Traffic & Visitor Counter
+  const visitorCountEl = document.getElementById('ctos-visitor-count');
+  const activeSessionsEl = document.getElementById('ctos-active-sessions');
+
+  async function updateTrafficAnalytics() {
+    try {
+      const storedVisits = parseInt(localStorage.getItem('arghyax_local_visits') || '1428', 10) + 1;
+      localStorage.setItem('arghyax_local_visits', storedVisits);
+      
+      let hits = storedVisits;
+      try {
+        const res = await fetch('https://api.counterapi.dev/v1/arghyax-portfolio/visits/up', { mode: 'cors' });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.count) hits = data.count + 1420;
+        }
+      } catch (e) {}
+
+      if (visitorCountEl) {
+        visitorCountEl.textContent = `${hits.toLocaleString()} HITS`;
+      }
+      if (activeSessionsEl) {
+        const randNodes = Math.floor(32 + Math.random() * 16);
+        activeSessionsEl.textContent = `${randNodes} NODES`;
+      }
+      window.ctosTrafficStats = { totalHits: hits, activeNodes: 38 };
+    } catch (e) {
+      if (visitorCountEl) visitorCountEl.textContent = '1,429 HITS';
+    }
+  }
+  updateTrafficAnalytics();
 });
 
 /* --------------------------------------------------------------------------

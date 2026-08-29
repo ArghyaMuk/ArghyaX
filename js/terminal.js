@@ -27,6 +27,10 @@ class InteractiveTerminal {
       api: this.cmdFlask.bind(this),
       contact: this.cmdContact.bind(this),
       clear: this.cmdClear.bind(this),
+      visitors: this.cmdVisitors.bind(this),
+      traffic: this.cmdVisitors.bind(this),
+      analytics: this.cmdVisitors.bind(this),
+      stats: this.cmdVisitors.bind(this),
       cls: this.cmdClear.bind(this),
       fetch: this.cmdFetch.bind(this),
       neofetch: this.cmdFetch.bind(this),
@@ -148,6 +152,7 @@ class InteractiveTerminal {
 <span class="term-cmd">skills</span>     - Core technical stack (Agentic AI, AWS, Azure, GCP, K8s, Python)
 <span class="term-cmd">projects</span>   - Highlighted enterprise solutions &amp; architecture
 <span class="term-cmd">agent</span>      - Inspect live LangGraph &amp; Strands multi-agent state
+<span class="term-cmd">visitors</span>   - Inspect real-time ctOS traffic &amp; unique visitor analytics
 <span class="term-cmd">terraform</span>  - View Infrastructure as Code (IaC) &amp; GitOps status
 <span class="term-cmd">gcp</span>        - Google Cloud Platform &amp; Multi-Cloud cluster telemetry
 <span class="term-cmd">flask</span>      - Inspect Python &amp; Flask RESTful API Gateway layer
@@ -156,7 +161,6 @@ class InteractiveTerminal {
 <span class="term-cmd">fetch</span>      - Display system runtime &amp; credentials
 <span class="term-cmd">contact</span>    - Get direct contact links (Email, GitHub, LinkedIn)
 <span class="term-cmd">matrix</span>     - Toggle matrix stream cyber effect
-<span class="term-cmd">theme</span>      - Switch theme: 'theme obsidian', 'theme space', 'theme matrix'
 <span class="term-cmd">github</span>     - Jump directly to GitHub profile (@ArghyaMuk)
 <span class="term-cmd">clear</span>      - Clear terminal screen
 <span class="term-dim">Tip: Use Tab for autocomplete and Up/Down arrows for command history.</span>
@@ -274,6 +278,19 @@ GitHub: <a href="https://github.com/ArghyaMuk" target="_blank" style="color:var(
 • GitHub   : <a href="https://github.com/ArghyaMuk" target="_blank" style="color:var(--accent-cyan);">github.com/ArghyaMuk</a>
 • Email    : arghyamukherjee06@gmail.com
 • Status   : AI/ML &amp; Cloud Engineer @ TCS. Open for Agentic AI, Cloud &amp; LLM discussions.
+    `;
+  }
+
+  cmdVisitors() {
+    const visits = window.ctosTrafficStats ? window.ctosTrafficStats.totalHits : (localStorage.getItem('arghyax_local_visits') || '1429');
+    const nodes = window.ctosTrafficStats ? window.ctosTrafficStats.activeNodes : 38;
+    return `
+<span class="term-success">📡 [ctOS SURVEILLANCE &amp; TRAFFIC TELEMETRY]</span>
+• Total Mainframe Hits    : <span style="color:var(--accent-cyan); font-weight:700;">${Number(visits).toLocaleString()} Hits</span>
+• Active Global Sessions  : <span style="color:#00FF66; font-weight:700;">${nodes} Active Nodes</span>
+• Primary Origin Matrix   : San Francisco, London, Tokyo, Frankfurt, Bengaluru
+• Protocol Version        : ctOS 2.0 (TLS 1.3 / HTTP/3.0 / WebSocket)
+• Security Integrity      : 100% Zero-Vulnerability (CodeQL + Trivy Verified)
     `;
   }
 

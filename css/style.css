@@ -2278,10 +2278,92 @@ textarea.form-control {
   .modal-spec-grid {
     grid-template-columns: 1fr;
   }
+/* ==========================================================================
+   16. FOOTER & ctOS TRAFFIC MONITOR
+   ========================================================================== */
+.footer {
+  padding: 2.5rem 0 3rem 0;
+  border-top: 1px solid rgba(0, 240, 255, 0.15);
+  background: #070A0E;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.footer-copy strong {
+  color: var(--text-primary);
+}
+
+.footer-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: #9BA8B2;
+}
+
+/* ctOS Live Surveillance Traffic & Visitor Monitor */
+.ctos-traffic-monitor {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(0, 240, 255, 0.04);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  letter-spacing: 0.05em;
+  margin-top: 0.35rem;
+  width: fit-content;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.06);
+}
+
+.traffic-bracket {
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+.traffic-label {
+  color: #8D9DA9;
+}
+
+.traffic-value {
+  color: #00FF66;
+  font-weight: 700;
+}
+
+.traffic-sep {
+  color: rgba(0, 240, 255, 0.3);
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 /* ==========================================================================
-   17. J.A.R.V.I.S. NEURAL Q&A CHATBOT WIDGET
+   17. DEDSEC // ctOS 2.0 CHATBOT WIDGET
    ========================================================================== */
 .jarvis-chat-trigger {
   position: fixed;
