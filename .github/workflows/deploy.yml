@@ -1,4 +1,4 @@
-name: Deploy ctOS 
+name: Deploy ctOS
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -59,7 +59,7 @@ jobs:
           test -f js/kill-switch.js || (echo "❌ js/kill-switch.js missing" && exit 1)
           echo "✅ All core assets and files verified successfully."
 
-  # 2. Build & Deploy to GitHub Pages
+  # 2. Build & Deploy to GitHub Pages (GitHub Actions & Branch Dual-Target)
   deploy:
     name: 🚀 Deploy to GitHub Pages
     environment:
@@ -73,14 +73,22 @@ jobs:
 
       - name: 🌐 Setup GitHub Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
+        continue-on-error: true
 
       - name: 📦 Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
+        continue-on-error: true
         with:
           path: '.'
 
-      - name: 🚀 Deploy to GitHub Pages
+      - name: 🚀 Deploy via GitHub Actions
         id: deployment
         uses: actions/deploy-pages@v4
+        continue-on-error: true
+
+      - name: 🌿 Deploy to gh-pages Branch (Fail-Safe)
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: .
+          branch: gh-pages
+          clean: false
