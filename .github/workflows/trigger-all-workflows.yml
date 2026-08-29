@@ -1,0 +1,82 @@
+name: ⚡ ctOS Master Orchestrator (Trigger All Workflows)
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_branch:
+        description: 'Branch to execute workflows on'
+        required: true
+        default: 'main'
+      reason:
+        description: 'Reason for batch trigger'
+        required: false
+        default: 'Manual ctOS Cyber Security & Deployment Fleet Dispatch'
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  orchestrate-all:
+    name: 🌐 Dispatch Full ctOS Workflow Fleet
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: ⚡ Trigger All Workflows via GitHub REST API
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const workflows = [
+              { file: 'deploy.yml', name: '🚀 Deploy ctOS (GitHub Pages)' },
+              { file: 'code-quality.yml', name: '🎨 Static Code Quality & Syntax Validation' },
+              { file: 'codeql.yml', name: '🛡️ CodeQL Zero-Vulnerability Security Agent' },
+              { file: 'security-scan.yml', name: '🔒 Security & Secret Audit' },
+              { file: 'trivy-scan.yml', name: '🛡️ Aqua Trivy Scanner' },
+              { file: 'dependency-review.yml', name: '📦 Dependency & Supply Chain Scanner' },
+              { file: 'health-check.yml', name: '⚡ Live Health Check & Uptime Telemetry' },
+              { file: 'agent-triage.yml', name: '🤖 DedSec AI Triage & PR Watchdog Agent' }
+            ];
+
+            const ref = context.payload.inputs?.target_branch || 'main';
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            let summaryRows = [];
+
+            for (const wf of workflows) {
+              try {
+                core.info(`[ctOS] Triggering workflow: ${wf.name} (${wf.file}) on branch: ${ref}`);
+                await github.rest.actions.createWorkflowDispatch({
+                  owner,
+                  repo,
+                  workflow_id: wf.file,
+                  ref
+                });
+                core.info(`✅ Successfully dispatched ${wf.name}`);
+                summaryRows.push(`| ${wf.name} | \`${wf.file}\` | 🚀 **DISPATCHED** | \`${ref}\` |`);
+              } catch (err) {
+                core.warning(`⚠️ Failed to dispatch ${wf.file}: ${err.message}`);
+                summaryRows.push(`| ${wf.name} | \`${wf.file}\` | ⚠️ *${err.message.replace(/\|/g, '')}* | \`${ref}\` |`);
+              }
+            }
+
+            const summary = `
+            # ⚡ ctOS Master Orchestrator: Fleet Execution Matrix
+
+            > **Reason**: ${context.payload.inputs?.reason || 'Batch Trigger'}  
+            > **Target Ref**: \`${ref}\`  
+            > **Triggered By**: @${context.actor}
+
+            | Workflow Name | Workflow File | Status | Target Ref |
+            | :--- | :--- | :---: | :---: |
+            ${summaryRows.join('\n')}
+
+            ---
+            *DedSec ctOS 2.0 Autonomous CI/CD Orchestration Layer Active*
+            `;
+
+            await core.summary.addRaw(summary).write();
