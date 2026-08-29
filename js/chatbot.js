@@ -265,8 +265,8 @@ class JarvisChatbot {
     }
 
     // 8. General Greetings
-    if (q.includes('hello') || q.includes('hi') || q.includes('hey') || q.includes('greetings') || q.includes('jarvis')) {
-      return "Hello! I am **J.A.R.V.I.S.**, operational and connected to Arghya's neural knowledge base. Feel free to ask about his **TCS AI/ML experience**, **LangGraph swarms**, **Multi-Cloud Terraform pipelines**, or **Python/Flask REST APIs**!";
+    if (q.includes('hello') || q.includes('hi') || q.includes('hey') || q.includes('greetings') || q.includes('dedsec') || q.includes('ctos') || q.includes('jarvis')) {
+      return "DedSec // ctOS 2.0 Profiler Online. Neural uplink established to Arghya's knowledge base. Feel free to ask about his **TCS AI/ML experience**, **LangGraph swarms**, **Multi-Cloud Terraform pipelines**, or **Python/Flask REST APIs**!";
     }
 
     // 9. General Technical & Conceptual Questions
