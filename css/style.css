@@ -2439,7 +2439,7 @@ textarea.form-control {
 .jarvis-action-btn {
   width: 28px;
   height: 28px;
-  border-radius: 6px;
+  border-radius: 0 !important;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
@@ -2459,8 +2459,8 @@ textarea.form-control {
 /* Quick Suggestion Chips Bar */
 .jarvis-quick-chips {
   padding: 0.6rem 0.9rem;
-  background: rgba(5, 8, 18, 0.6);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: #080C10;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
   display: flex;
   gap: 0.45rem;
   overflow-x: auto;
@@ -2472,19 +2472,19 @@ textarea.form-control {
   padding: 0.35rem 0.7rem;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: var(--text-secondary);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--border-radius-full);
+  color: #CBD2D6;
+  background: rgba(0, 240, 255, 0.05);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 0 !important;
   white-space: nowrap;
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 .jarvis-chip:hover {
-  background: rgba(var(--accent-cyan-rgb), 0.15);
-  color: var(--accent-cyan);
-  border-color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.18);
+  color: #00F0FF;
+  border-color: #00F0FF;
   transform: translateY(-1px);
 }
 
@@ -2519,10 +2519,11 @@ textarea.form-control {
 }
 
 .user-msg .msg-bubble {
-  background: linear-gradient(135deg, rgba(var(--accent-cyan-rgb), 0.25), rgba(var(--accent-purple-rgb), 0.25));
-  border: 1px solid rgba(var(--accent-cyan-rgb), 0.4);
-  color: #ffffff;
-  border-radius: 14px 14px 2px 14px;
+  background: #111A22;
+  border: 1px solid #00FF66;
+  color: #F2F2F2;
+  border-radius: 0 !important;
+  clip-path: polygon(6px 0, 100% 0, 100% 100%, 0 100%, 0 6px);
   padding: 0.65rem 0.95rem;
   font-size: 0.88rem;
   line-height: 1.45;
@@ -2535,15 +2536,21 @@ textarea.form-control {
 .bot-msg .msg-avatar {
   width: 28px;
   height: 28px;
-  border-radius: 6px;
-  background: rgba(var(--accent-cyan-rgb), 0.1);
-  border: 1px solid rgba(var(--accent-cyan-rgb), 0.4);
+  border-radius: 2px;
+  background: #030712;
+  border: 1px solid #00FF66;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.95rem;
+  overflow: hidden;
   flex-shrink: 0;
   margin-top: 2px;
+}
+
+.wd-bot-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .bot-msg .msg-content {
@@ -2556,24 +2563,25 @@ textarea.form-control {
   font-size: 0.68rem;
   font-weight: 700;
   color: var(--accent-cyan);
-  margin-bottom: 0.2rem;
-  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.08em;
 }
 
 .bot-msg .msg-bubble {
-  background: rgba(18, 24, 48, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px 14px 14px 2px;
+  background: #0D1217;
+  border: 1px solid rgba(0, 240, 255, 0.28);
+  border-radius: 0 !important;
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%);
   padding: 0.75rem 1rem;
   font-size: 0.86rem;
   color: var(--text-primary);
   line-height: 1.55;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .bot-msg .msg-bubble strong {
   color: var(--accent-cyan);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .bot-msg .msg-bubble code {

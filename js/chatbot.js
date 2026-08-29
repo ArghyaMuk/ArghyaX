@@ -57,7 +57,7 @@ class JarvisChatbot {
     setTimeout(() => {
       if (this.messagesContainer && this.messagesContainer.children.length === 0) {
         this.addBotMessage(
-          "Greetings! I am **J.A.R.V.I.S.**, Arghya Mukherjee's autonomous AI assistant. How may I assist you today regarding his **Agentic AI systems**, **Multi-Cloud (AWS, Azure, GCP)**, **Terraform/K8s**, or **Python/Flask** architectures?",
+          "DedSec // ctOS 2.0 Profiler Online. Neural uplink established to Arghya Mukherjee's portfolio mainframe. Ask anything about his **Agentic AI systems (LangGraph, Strands)**, **Multi-Cloud & GitOps (AWS, Azure, GCP, Kubernetes)**, or **Python/Flask** architectures.",
           false
         );
       }
@@ -83,7 +83,7 @@ class JarvisChatbot {
   clearChat() {
     if (this.messagesContainer) {
       this.messagesContainer.innerHTML = '';
-      this.addBotMessage("Memory buffer cleared. J.A.R.V.I.S. is standing by for your inquiries.", false);
+      this.addBotMessage("ctOS memory buffer flushed. DedSec Profiler is ready for your query.", false);
       if (window.soundFX) window.soundFX.playKeyClick();
     }
   }
@@ -131,10 +131,10 @@ class JarvisChatbot {
     msgDiv.className = 'jarvis-msg bot-msg';
     msgDiv.innerHTML = `
       <div class="msg-avatar">
-        <span>🤖</span>
+        <img src="assets/dedsec_emblem.jpg" alt="DedSec" class="wd-bot-avatar" />
       </div>
       <div class="msg-content">
-        <div class="msg-sender">J.A.R.V.I.S. Core</div>
+        <div class="msg-sender">[DEDSEC // ctOS_PROFILER_v2.0]</div>
         <div class="msg-bubble"></div>
         <span class="msg-time">${this.getCurrentTime()}</span>
       </div>
