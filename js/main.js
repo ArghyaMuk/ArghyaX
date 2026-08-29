@@ -24,12 +24,15 @@ class SoundEffects {
   }
 
   initContext() {
-    if (!this.audioCtx) {
+    if (!window.ctosSharedAudioCtx) {
       const AudioContext = window.AudioContext || window.webkitAudioContext;
-      this.audioCtx = new AudioContext();
+      if (AudioContext) {
+        window.ctosSharedAudioCtx = new AudioContext();
+      }
     }
+    this.audioCtx = window.ctosSharedAudioCtx;
     if (this.audioCtx && this.audioCtx.state === 'suspended') {
-      this.audioCtx.resume();
+      this.audioCtx.resume().catch(() => {});
     }
   }
 

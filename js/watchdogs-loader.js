@@ -183,21 +183,39 @@ class WatchDogsLoader {
     }, 450);
   }
 
+  // Shared Persistent Audio Engine for Watch Dogs 2 Sound System
+  getAudioContext() {
+    if (!window.ctosSharedAudioCtx) {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) {
+        window.ctosSharedAudioCtx = new AudioCtx();
+      }
+    }
+    if (window.ctosSharedAudioCtx && window.ctosSharedAudioCtx.state === 'suspended') {
+      window.ctosSharedAudioCtx.resume().catch(() => {});
+    }
+    return window.ctosSharedAudioCtx;
+  }
+
   // 1. Initial Watch Dogs 2 Multi-Layer Cyber Glitch Audio
   playGlitchSound() {
     try {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
+      const ctx = this.getAudioContext();
+      if (!ctx) return;
 
       if (ctx.state === 'suspended') {
         const unlock = () => {
-          ctx.resume();
-          window.removeEventListener('click', unlock);
-          window.removeEventListener('keydown', unlock);
+          ctx.resume().then(() => {
+            this.playGlitchSound();
+          }).catch(() => {});
+          ['click', 'pointerdown', 'pointermove', 'mousemove', 'keydown', 'touchstart', 'scroll', 'wheel'].forEach(evt => {
+            window.removeEventListener(evt, unlock);
+          });
         };
-        window.addEventListener('click', unlock);
-        window.addEventListener('keydown', unlock);
+        ['click', 'pointerdown', 'pointermove', 'mousemove', 'keydown', 'touchstart', 'scroll', 'wheel'].forEach(evt => {
+          window.addEventListener(evt, unlock, { once: true, passive: true });
+        });
+        return;
       }
 
       // Layer A: FM Modulated Glitch Sweep
@@ -208,7 +226,7 @@ class WatchDogsLoader {
       osc1.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.12);
       osc1.frequency.exponentialRampToValueAtTime(280, ctx.currentTime + 0.3);
 
-      gain1.gain.setValueAtTime(0.12, ctx.currentTime);
+      gain1.gain.setValueAtTime(0.2, ctx.currentTime);
       gain1.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
 
       osc1.connect(gain1);
@@ -217,14 +235,14 @@ class WatchDogsLoader {
       osc1.stop(ctx.currentTime + 0.36);
 
       // Layer B: Square Wave Stutter
-      for (let i = 0; i < 3; i++) {
-        const t = ctx.currentTime + i * 0.08;
+      for (let i = 0; i < 4; i++) {
+        const t = ctx.currentTime + i * 0.07;
         const osc2 = ctx.createOscillator();
         const gain2 = ctx.createGain();
         osc2.type = 'square';
-        osc2.frequency.setValueAtTime(800 - i * 180, t);
+        osc2.frequency.setValueAtTime(900 - i * 160, t);
 
-        gain2.gain.setValueAtTime(0.06, t);
+        gain2.gain.setValueAtTime(0.12, t);
         gain2.gain.exponentialRampToValueAtTime(0.001, t + 0.04);
 
         osc2.connect(gain2);
@@ -233,8 +251,8 @@ class WatchDogsLoader {
         osc2.stop(t + 0.05);
       }
 
-      // Layer C: Static Noise Pulse
-      const bufferSize = ctx.sampleRate * 0.2;
+      // Layer C: Static Noise Burst
+      const bufferSize = Math.floor(ctx.sampleRate * 0.2);
       const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
       const data = buffer.getChannelData(0);
       for (let i = 0; i < bufferSize; i++) {
@@ -243,30 +261,27 @@ class WatchDogsLoader {
       const noise = ctx.createBufferSource();
       noise.buffer = buffer;
       const noiseGain = ctx.createGain();
-      noiseGain.gain.setValueAtTime(0.05, ctx.currentTime);
+      noiseGain.gain.setValueAtTime(0.08, ctx.currentTime);
       noiseGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
 
       noise.connect(noiseGain);
       noiseGain.connect(ctx.destination);
       noise.start();
-    } catch (e) {
-      // Autoplay fallback
-    }
+    } catch (e) {}
   }
 
   // 2. Micro Data Stream Ticking Sound
   playDataStreamClick() {
     try {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
+      const ctx = this.getAudioContext();
+      if (!ctx || ctx.state === 'suspended') return;
 
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       osc.type = 'square';
-      osc.frequency.setValueAtTime(1400 + Math.random() * 400, ctx.currentTime);
+      osc.frequency.setValueAtTime(1400 + Math.random() * 500, ctx.currentTime);
 
-      gain.gain.setValueAtTime(0.02, ctx.currentTime);
+      gain.gain.setValueAtTime(0.04, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.025);
 
       osc.connect(gain);
@@ -279,9 +294,8 @@ class WatchDogsLoader {
   // 3. Milestone Telemetry Blip
   playTelemetryBlip(freq = 440) {
     try {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
+      const ctx = this.getAudioContext();
+      if (!ctx || ctx.state === 'suspended') return;
 
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
@@ -289,7 +303,7 @@ class WatchDogsLoader {
       osc.frequency.setValueAtTime(freq, ctx.currentTime);
       osc.frequency.exponentialRampToValueAtTime(freq * 1.6, ctx.currentTime + 0.09);
 
-      gain.gain.setValueAtTime(0.06, ctx.currentTime);
+      gain.gain.setValueAtTime(0.08, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
 
       osc.connect(gain);
@@ -302,9 +316,8 @@ class WatchDogsLoader {
   // 4. Access Granted Dual-Tone Chime
   playAccessGrantedChime() {
     try {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
+      const ctx = this.getAudioContext();
+      if (!ctx || ctx.state === 'suspended') return;
 
       const tones = [587.33, 880.00, 1174.66]; // D5, A5, D6
       tones.forEach((freq, idx) => {
@@ -314,7 +327,7 @@ class WatchDogsLoader {
         osc.type = 'sine';
         osc.frequency.setValueAtTime(freq, time);
 
-        gain.gain.setValueAtTime(0.09, time);
+        gain.gain.setValueAtTime(0.12, time);
         gain.gain.exponentialRampToValueAtTime(0.001, time + 0.35);
 
         osc.connect(gain);
