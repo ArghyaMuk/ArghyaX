@@ -60,7 +60,7 @@ class CtosAudioEngine {
       osc1.frequency.exponentialRampToValueAtTime(1600, now + 0.15);
       osc1.frequency.exponentialRampToValueAtTime(320, now + 0.35);
 
-      gain1.gain.setValueAtTime(0.40, now);
+      gain1.gain.setValueAtTime(0.65, now);
       gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
 
       osc1.connect(gain1);
@@ -76,7 +76,7 @@ class CtosAudioEngine {
         osc2.type = 'square';
         osc2.frequency.setValueAtTime(1000 - i * 200, t);
 
-        gain2.gain.setValueAtTime(0.30, t);
+        gain2.gain.setValueAtTime(0.45, t);
         gain2.gain.exponentialRampToValueAtTime(0.001, t + 0.05);
 
         osc2.connect(gain2);
@@ -95,7 +95,7 @@ class CtosAudioEngine {
       const noise = ctx.createBufferSource();
       noise.buffer = buffer;
       const noiseGain = ctx.createGain();
-      noiseGain.gain.setValueAtTime(0.25, now);
+      noiseGain.gain.setValueAtTime(0.35, now);
       noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
 
       noise.connect(noiseGain);
@@ -117,7 +117,7 @@ class CtosAudioEngine {
       osc.type = 'square';
       osc.frequency.setValueAtTime(1600 + Math.random() * 600, now);
 
-      gain.gain.setValueAtTime(0.15, now);
+      gain.gain.setValueAtTime(0.28, now);
       gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.03);
 
       osc.connect(gain);
@@ -141,7 +141,7 @@ class CtosAudioEngine {
       osc.frequency.setValueAtTime(freq, now);
       osc.frequency.exponentialRampToValueAtTime(freq * 1.5, now + 0.08);
 
-      gain.gain.setValueAtTime(0.35, now);
+      gain.gain.setValueAtTime(0.48, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
 
       osc.connect(gain);
