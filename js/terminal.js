@@ -272,7 +272,7 @@ GitHub: <a href="https://github.com/ArghyaMuk" target="_blank" style="color:var(
     return `
 <span class="term-success">📬 CONTACT &amp; CHANNELS:</span>
 • GitHub   : <a href="https://github.com/ArghyaMuk" target="_blank" style="color:var(--accent-cyan);">github.com/ArghyaMuk</a>
-• Email    : arghya.dev.x@gmail.com
+• Email    : arghyamukherjee06@gmail.com
 • Status   : AI/ML &amp; Cloud Engineer @ TCS. Open for Agentic AI, Cloud &amp; LLM discussions.
     `;
   }

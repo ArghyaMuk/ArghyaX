@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyEmailBtn = document.getElementById('copy-email-btn');
   if (copyEmailBtn) {
     copyEmailBtn.addEventListener('click', () => {
-      const email = 'arghya.dev.x@gmail.com';
+      const email = 'arghyamukherjee06@gmail.com';
       navigator.clipboard.writeText(email).then(() => {
         if (window.soundFX) window.soundFX.playSuccessChirp();
         showToast('📋 Email copied to clipboard: ' + email);

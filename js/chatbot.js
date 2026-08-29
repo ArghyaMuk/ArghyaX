@@ -261,7 +261,7 @@ class JarvisChatbot {
 
     // 7. Contact / Hire / Socials
     if (q.includes('contact') || q.includes('email') || q.includes('hire') || q.includes('reach') || q.includes('github') || q.includes('linkedin') || q.includes('message')) {
-      return "You can connect with Arghya through the following channels:\n\n• **Email**: [arghya.dev.x@gmail.com](mailto:arghya.dev.x@gmail.com)\n• **GitHub**: [github.com/ArghyaMuk](https://github.com/ArghyaMuk)\n• **Contact Form**: Use the interactive dispatcher at the bottom of this page!\n\nHe is actively open for technical collaborations, Agentic AI architectures, and cloud migrations.";
+      return "You can connect with Arghya through the following channels:\n\n• **Email**: [arghyamukherjee06@gmail.com](mailto:arghyamukherjee06@gmail.com)\n• **GitHub**: [github.com/ArghyaMuk](https://github.com/ArghyaMuk)\n• **Contact Form**: Use the interactive dispatcher at the bottom of this page!\n\nHe is actively open for technical collaborations, Agentic AI architectures, and cloud migrations.";
     }
 
     // 8. General Greetings
@@ -287,7 +287,7 @@ class JarvisChatbot {
       name: "Arghya Mukherjee",
       handle: "ArghyaX",
       role: "AI/ML & Cloud Engineer @ Tata Consultancy Services (TCS)",
-      email: "arghya.dev.x@gmail.com",
+      email: "arghyamukherjee06@gmail.com",
       github: "https://github.com/ArghyaMuk"
     };
   }
