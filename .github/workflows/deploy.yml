@@ -52,6 +52,8 @@ jobs:
           test -f js/main.js || (echo "❌ js/main.js missing" && exit 1)
           test -f js/agentic-simulator.js || (echo "❌ js/agentic-simulator.js missing" && exit 1)
           test -f js/terminal.js || (echo "❌ js/terminal.js missing" && exit 1)
+          test -f js/chatbot.js || (echo "❌ js/chatbot.js missing" && exit 1)
+          test -f js/watchdogs-loader.js || (echo "❌ js/watchdogs-loader.js missing" && exit 1)
           test -f assets/jarvis_ai_core.jpg || (echo "❌ assets/jarvis_ai_core.jpg missing" && exit 1)
           echo "✅ All core assets and files verified successfully."
 

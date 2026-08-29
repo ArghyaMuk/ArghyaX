@@ -37,11 +37,44 @@
 
 <body>
 
+  <!-- =========================================================================
+       WATCH DOGS 2 (DEDSEC // ctOS 2.0) LOADING SCREEN OVERLAY
+       ========================================================================= -->
+  <div id="watchdogs-loader">
+    <div class="wd-loader-container">
+      
+      <!-- DedSec Glitch Header -->
+      <div class="wd-loader-header">
+        <div class="wd-logo-glitch">[ DEDSEC // ctOS_BREACH_v2.0 ]</div>
+        <div class="wd-status-pill">EXPLOIT_ACTIVE</div>
+      </div>
+
+      <!-- ASCII Skull Visual Box -->
+      <div class="wd-skull-box" id="wd-dedsec-skull"></div>
+
+      <!-- Live Terminal Hacking Stream -->
+      <div class="wd-terminal-stream" id="wd-terminal-stream"></div>
+
+      <!-- Glitch Progress Bar -->
+      <div class="wd-progress-section">
+        <div class="wd-progress-meta">
+          <span>INJECTING_ARGHYAX_PAYLOAD...</span>
+          <span id="wd-progress-pct">0%</span>
+        </div>
+        <div class="wd-progress-track">
+          <div class="wd-progress-fill" id="wd-progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="wd-skip-hint" id="wd-skip-hint">[ CLICK OR PRESS ANY KEY TO INITIALIZE ]</div>
+    </div>
+  </div>
+
   <!-- Ambient Glow Backdrops -->
   <div class="ambient-glow ambient-glow-1"></div>
   <div class="ambient-glow ambient-glow-2"></div>
 
-  <!-- Interactive Particle Background Canvas -->
+  <!-- Interactive Watch Dogs 2 Cyber Canvas -->
   <canvas id="particles-canvas"></canvas>
 
   <!-- =========================================================================
@@ -60,7 +93,6 @@
         <a href="#about" class="nav-link">About</a>
         <a href="#terminal" class="nav-link">Terminal</a>
         <a href="#agentic-studio" class="nav-link">Agentic Studio</a>
-        <a href="#projects" class="nav-link">Projects</a>
         <a href="#skills" class="nav-link">Skills</a>
         <a href="#journey" class="nav-link">Journey</a>
         <a href="#contact" class="nav-link">Contact</a>
@@ -110,7 +142,6 @@
     <a href="#about" class="nav-link">About</a>
     <a href="#terminal" class="nav-link">Interactive Terminal</a>
     <a href="#agentic-studio" class="nav-link">Agentic Studio</a>
-    <a href="#projects" class="nav-link">Projects</a>
     <a href="#skills" class="nav-link">Technical Skills</a>
     <a href="#journey" class="nav-link">Journey &amp; Milestones</a>
     <a href="#contact" class="nav-link">Contact</a>
@@ -147,20 +178,18 @@
 
         <!-- CTA Action Buttons -->
         <div class="hero-cta-group">
-          <a href="#projects" class="btn btn-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-              <polyline points="2 17 12 22 22 17"></polyline>
-              <polyline points="2 12 12 17 22 12"></polyline>
-            </svg>
-            Explore Projects
-          </a>
-
-          <a href="#agentic-studio" class="btn btn-secondary">
+          <a href="#agentic-studio" class="btn btn-primary">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
             </svg>
-            Architecture Studio
+            Explore Agentic Studio
+          </a>
+
+          <a href="#skills" class="btn btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            Technical Skills Matrix
           </a>
 
           <a href="#terminal" class="btn btn-outline-glow">
@@ -286,7 +315,6 @@
           <button class="terminal-chip-btn" data-cmd="help">help</button>
           <button class="terminal-chip-btn" data-cmd="about">about</button>
           <button class="terminal-chip-btn" data-cmd="skills">skills</button>
-          <button class="terminal-chip-btn" data-cmd="projects">projects</button>
           <button class="terminal-chip-btn" data-cmd="agent">agent</button>
           <button class="terminal-chip-btn" data-cmd="terraform">terraform</button>
           <button class="terminal-chip-btn" data-cmd="gcp">gcp</button>
@@ -560,276 +588,7 @@
   </section>
 
   <!-- =========================================================================
-       6. FEATURED PROJECTS SHOWCASE
-       ========================================================================= -->
-  <section id="projects" class="projects-section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="16 18 22 12 16 6"></polyline>
-            <polyline points="8 6 2 12 8 18"></polyline>
-          </svg>
-          Featured Architectures
-        </div>
-        <h2 class="section-title">Production <span class="text-gradient">AI &amp; Cloud Systems</span></h2>
-        <p class="section-subtitle">Real-world production systems spanning autonomous Agentic AI, enterprise RAG on AWS
-          Bedrock, Kubernetes cloud orchestration, and high-throughput Python backends.</p>
-      </div>
-
-      <!-- Filter Tabs -->
-      <div class="projects-filter-bar">
-        <button class="filter-btn active" data-filter="all">All Solutions</button>
-        <button class="filter-btn" data-filter="agentic">Agentic AI &amp; LLMs</button>
-        <button class="filter-btn" data-filter="cloud">Cloud &amp; Kubernetes</button>
-        <button class="filter-btn" data-filter="backend">Backend &amp; APIs</button>
-      </div>
-
-      <!-- Projects Grid -->
-      <div class="projects-grid">
-
-        <!-- Project 1: AgentGraph Multi-Agent Orchestrator -->
-        <div class="glass-card project-card" data-category="agentic backend">
-          <div class="project-img-wrapper">
-            <span class="badge badge-purple project-category-badge">Agentic AI &amp; LangGraph</span>
-            <img src="assets/agentgraph_orchestrator.jpg" alt="AgentGraph Multi-Agent Orchestrator"
-              class="project-img" />
-          </div>
-
-          <div class="project-body">
-            <div class="project-header">
-              <h3 class="project-title">AgentGraph Multi-Agent Orchestrator</h3>
-              <p class="project-desc">
-                Enterprise autonomous multi-agent swarm framework built with LangGraph, Strands Agents, and AWS Bedrock.
-                Orchestrates dynamic tool calling, cyclical state verification, and memory checkpointing.
-              </p>
-            </div>
-
-            <div class="project-metrics-strip">
-              <div class="metric-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                </svg>
-                <strong>5 Active</strong> Agent Nodes
-              </div>
-              <div class="metric-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                </svg>
-                <strong>98.5%</strong> Success Rate
-              </div>
-            </div>
-
-            <div class="project-tags">
-              <span class="badge">LangGraph</span>
-              <span class="badge">Strands Agents</span>
-              <span class="badge">LangChain</span>
-              <span class="badge">AWS Bedrock</span>
-              <span class="badge">Python</span>
-              <span class="badge">Redis</span>
-            </div>
-
-            <div class="project-footer">
-              <button class="btn btn-primary btn-sm view-project-btn" data-project="agentgraph">
-                View Architecture
-              </button>
-              <div class="project-links">
-                <a href="https://github.com/ArghyaMuk" target="_blank" class="social-btn" title="View Source on GitHub"
-                  aria-label="GitHub Repository">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path
-                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                    </path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 2: NeuroQuery Enterprise RAG Engine -->
-        <div class="glass-card project-card" data-category="agentic cloud">
-          <div class="project-img-wrapper">
-            <span class="badge badge-cyan project-category-badge">Enterprise RAG &amp; Bedrock</span>
-            <img src="assets/neuroquery_rag.jpg" alt="NeuroQuery Enterprise RAG Engine" class="project-img" />
-          </div>
-
-          <div class="project-body">
-            <div class="project-header">
-              <h3 class="project-title">NeuroQuery Enterprise RAG Engine</h3>
-              <p class="project-desc">
-                High-throughput technical knowledge retrieval and question-answering assistant running on AWS Bedrock
-                and Azure, featuring hybrid semantic vector search and rank fusion.
-              </p>
-            </div>
-
-            <div class="project-metrics-strip">
-              <div class="metric-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 14 14"></polyline>
-                </svg>
-                <strong>190ms</strong> TTFT Latency
-              </div>
-              <div class="metric-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-                <strong>96.2%</strong> Precision
-              </div>
-            </div>
-
-            <div class="project-tags">
-              <span class="badge">AWS Bedrock</span>
-              <span class="badge">LangChain</span>
-              <span class="badge">ChromaDB</span>
-              <span class="badge">Qdrant</span>
-              <span class="badge">Azure</span>
-              <span class="badge">FastAPI</span>
-            </div>
-
-            <div class="project-footer">
-              <button class="btn btn-primary btn-sm view-project-btn" data-project="neuroquery">
-                View Architecture
-              </button>
-              <div class="project-links">
-                <a href="https://github.com/ArghyaMuk" target="_blank" class="social-btn" title="View Source on GitHub"
-                  aria-label="GitHub Repository">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path
-                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                    </path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 3: SentinelGuard Cloud API Gateway -->
-        <div class="glass-card project-card" data-category="backend cloud">
-          <div class="project-img-wrapper">
-            <span class="badge badge-emerald project-category-badge">Cloud &amp; APIs</span>
-            <img src="assets/sentinel_gateway.jpg" alt="SentinelGuard API Gateway" class="project-img" />
-          </div>
-
-          <div class="project-body">
-            <div class="project-header">
-              <h3 class="project-title">SentinelGuard Cloud API Gateway</h3>
-              <p class="project-desc">
-                Kubernetes-native asynchronous reverse proxy and microservices router featuring Redis token-bucket rate
-                limiting, dynamic routing, and JWT cryptographic verification.
-              </p>
-            </div>
-
-            <div class="project-metrics-strip">
-              <div class="metric-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
-                </svg>
-                <strong>1.2M</strong> Req/sec Scale
-              </div>
-              <div class="metric-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                </svg>
-                <strong>Zero-Trust</strong> Auth
-              </div>
-            </div>
-
-            <div class="project-tags">
-              <span class="badge">Python</span>
-              <span class="badge">Kubernetes</span>
-              <span class="badge">AsyncIO</span>
-              <span class="badge">Redis</span>
-              <span class="badge">FastAPI</span>
-              <span class="badge">Docker</span>
-            </div>
-
-            <div class="project-footer">
-              <button class="btn btn-primary btn-sm view-project-btn" data-project="sentinel">
-                View Architecture
-              </button>
-              <div class="project-links">
-                <a href="https://github.com/ArghyaMuk" target="_blank" class="social-btn" title="View Source on GitHub"
-                  aria-label="GitHub Repository">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path
-                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                    </path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 4: CloudOps Kubernetes GitOps Engine -->
-        <div class="glass-card project-card" data-category="cloud">
-          <div class="project-img-wrapper">
-            <span class="badge badge-amber project-category-badge">Kubernetes &amp; CI/CD</span>
-            <img src="assets/cloudops_gitops.jpg" alt="CloudOps GitOps Engine" class="project-img" />
-          </div>
-
-          <div class="project-body">
-            <div class="project-header">
-              <h3 class="project-title">CloudOps Kubernetes GitOps Engine</h3>
-              <p class="project-desc">
-                Automated continuous integration and continuous deployment engine for containerized AI agent workloads
-                across Microsoft Azure (AKS) and Kubernetes with automated canary rollouts.
-              </p>
-            </div>
-
-            <div class="project-metrics-strip">
-              <div class="metric-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 14 14"></polyline>
-                </svg>
-                <strong>&lt; 3 Min</strong> CI/CD Build
-              </div>
-              <div class="metric-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                </svg>
-                <strong>Auto-Scaling</strong> HPA
-              </div>
-            </div>
-
-            <div class="project-tags">
-              <span class="badge">Kubernetes</span>
-              <span class="badge">Azure (AKS)</span>
-              <span class="badge">CI/CD</span>
-              <span class="badge">GitHub Actions</span>
-              <span class="badge">Docker</span>
-              <span class="badge">Helm</span>
-            </div>
-
-            <div class="project-footer">
-              <button class="btn btn-primary btn-sm view-project-btn" data-project="cloudops">
-                View Architecture
-              </button>
-              <div class="project-links">
-                <a href="https://github.com/ArghyaMuk" target="_blank" class="social-btn" title="View Source on GitHub"
-                  aria-label="GitHub Repository">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path
-                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                    </path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================================================================
-       7. TECHNICAL SKILLS & PROFICIENCY MATRIX
+       6. TECHNICAL SKILLS & PROFICIENCY MATRIX
        ========================================================================= -->
   <section id="skills" class="skills-section">
     <div class="container">
@@ -1328,24 +1087,67 @@
   </footer>
 
   <!-- =========================================================================
-       11. PROJECT BLUEPRINT MODAL
+       10. J.A.R.V.I.S. NEURAL Q&A CHATBOT WIDGET
        ========================================================================= -->
-  <div id="project-modal" class="modal-backdrop" role="dialog" aria-modal="true">
-    <div class="modal-container">
-      <button id="modal-close-btn" class="modal-close-btn" title="Close modal" aria-label="Close modal">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
+  <!-- Floating Chatbot Launcher Trigger -->
+  <div id="jarvis-chat-trigger" class="jarvis-chat-trigger" title="Ask J.A.R.V.I.S. AI Assistant" aria-label="Open J.A.R.V.I.S. Chatbot">
+    <div class="jarvis-trigger-ring"></div>
+    <div class="jarvis-trigger-icon">🤖</div>
+    <div class="jarvis-trigger-badge"></div>
+  </div>
+
+  <!-- Chatbot Modal Window -->
+  <div id="jarvis-chat-modal" class="jarvis-chat-modal" role="dialog" aria-modal="true" aria-label="J.A.R.V.I.S. AI Chat">
+    <!-- Header -->
+    <div class="jarvis-chat-header">
+      <div class="jarvis-header-left">
+        <div class="jarvis-header-avatar">🤖</div>
+        <div class="jarvis-header-info">
+          <div class="jarvis-header-title">J.A.R.V.I.S. <span>AI</span></div>
+          <div class="jarvis-header-status">
+            <div class="pulse-dot"></div>
+            <span>Neural Q&amp;A Engine Online</span>
+          </div>
+        </div>
+      </div>
+      <div class="jarvis-header-actions">
+        <button id="jarvis-chat-clear" class="jarvis-action-btn" title="Clear Chat History" aria-label="Clear chat">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+        </button>
+        <button id="jarvis-chat-close" class="jarvis-action-btn" title="Minimize Chat" aria-label="Close chat">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Suggestion Chips -->
+    <div class="jarvis-quick-chips" id="jarvis-quick-chips">
+      <button class="jarvis-chip" data-query="Who is Arghya Mukherjee?">👤 Who is Arghya?</button>
+      <button class="jarvis-chip" data-query="Explain his Agentic AI &amp; LangGraph experience">🤖 Agentic AI &amp; LangGraph</button>
+      <button class="jarvis-chip" data-query="What is his role at TCS?">💼 TCS Role</button>
+      <button class="jarvis-chip" data-query="How does his Multi-Cloud &amp; Terraform architecture work?">☁️ Multi-Cloud &amp; IaC</button>
+      <button class="jarvis-chip" data-query="Tell me about his Python &amp; Flask REST API skills">🐍 Python &amp; Flask APIs</button>
+      <button class="jarvis-chip" data-query="How can I contact Arghya?">📬 Contact &amp; Hire</button>
+    </div>
+
+    <!-- Messages Container -->
+    <div class="jarvis-messages-body" id="jarvis-messages-body"></div>
+
+    <!-- Footer Input Bar -->
+    <div class="jarvis-chat-footer">
+      <input type="text" id="jarvis-chat-input" class="jarvis-chat-input" placeholder="Ask J.A.R.V.I.S. anything about Arghya's work..." autocomplete="off" spellcheck="false" />
+      <button id="jarvis-chat-send" class="jarvis-chat-send" title="Send Message" aria-label="Send message">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
       </button>
-      <div id="modal-content-area"></div>
     </div>
   </div>
 
   <!-- Scripts -->
+  <script src="js/watchdogs-loader.js"></script>
   <script src="js/canvas.js"></script>
   <script src="js/terminal.js"></script>
   <script src="js/agentic-simulator.js"></script>
+  <script src="js/chatbot.js"></script>
   <script src="js/main.js"></script>
 </body>
 
