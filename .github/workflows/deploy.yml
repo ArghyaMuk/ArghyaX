@@ -1,4 +1,4 @@
-name: Deploy ArghyaX Portfolio to GitHub Pages
+name: Deploy ctOS
 
 on:
   push:

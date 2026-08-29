@@ -335,37 +335,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 11. ctOS Live Surveillance Traffic & Visitor Counter
-  const visitorCountEl = document.getElementById('ctos-visitor-count');
-  const activeSessionsEl = document.getElementById('ctos-active-sessions');
+  // 11. ctOS Live User Public IP Detection & Geolocation Telemetry
+  const ipEl = document.getElementById('user-public-ip');
+  const locEl = document.getElementById('user-location');
 
-  async function updateTrafficAnalytics() {
+  async function detectUserPublicIP() {
     try {
-      const storedVisits = parseInt(localStorage.getItem('arghyax_local_visits') || '1428', 10) + 1;
-      localStorage.setItem('arghyax_local_visits', storedVisits);
-      
-      let hits = storedVisits;
-      try {
-        const res = await fetch('https://api.counterapi.dev/v1/arghyax-portfolio/visits/up', { mode: 'cors' });
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.count) hits = data.count + 1420;
+      const res = await fetch('https://ipapi.co/json/', { mode: 'cors' });
+      if (res.ok) {
+        const data = await res.json();
+        if (ipEl && data.ip) ipEl.textContent = data.ip;
+        if (locEl) {
+          const city = data.city ? data.city.toUpperCase() : 'INDIA';
+          const country = data.country_name ? data.country_name.toUpperCase() : 'GRID';
+          locEl.textContent = `${city} [${country}]`;
         }
-      } catch (e) {}
+        return;
+      }
+    } catch (e) {}
 
-      if (visitorCountEl) {
-        visitorCountEl.textContent = `${hits.toLocaleString()} HITS`;
+    // Secondary fallback
+    try {
+      const res2 = await fetch('https://api.ipify.org?format=json', { mode: 'cors' });
+      if (res2.ok) {
+        const data2 = await res2.json();
+        if (ipEl && data2.ip) ipEl.textContent = data2.ip;
+        if (locEl) locEl.textContent = 'INDIA // SECURED';
+        return;
       }
-      if (activeSessionsEl) {
-        const randNodes = Math.floor(32 + Math.random() * 16);
-        activeSessionsEl.textContent = `${randNodes} NODES`;
-      }
-      window.ctosTrafficStats = { totalHits: hits, activeNodes: 38 };
-    } catch (e) {
-      if (visitorCountEl) visitorCountEl.textContent = '1,429 HITS';
-    }
+    } catch (e) {}
+
+    if (ipEl) ipEl.textContent = '103.214.61.18';
+    if (locEl) locEl.textContent = 'INDIA // ctOS GRID';
   }
-  updateTrafficAnalytics();
+  detectUserPublicIP();
 });
 
 /* --------------------------------------------------------------------------

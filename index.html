@@ -1036,24 +1036,25 @@
   <footer class="footer">
     <div class="container footer-content">
       <div class="footer-left">
-        <div class="footer-copy">
-          © 2026 <strong>Arghya Mukherjee</strong> (ArghyaX) • AI/ML &amp; Cloud Engineer @ TCS. Built with clean HTML5,
-          Vanilla CSS3 &amp; Modern ES6 JavaScript.
-        </div>
-        <div class="footer-status">
-          <div class="pulse-dot"></div>
-          <span>Cloud Systems Operational • Kubernetes Cluster Active • Zero-Trust Security</span>
+        <!-- Love from India & Map Badge -->
+        <div class="footer-india-badge">
+          <svg class="india-map-icon" viewBox="0 0 100 115" width="28" height="32" fill="none" stroke="currentColor">
+            <path d="M48 5 L55 12 L62 18 L60 25 L68 28 L72 32 L82 34 L88 38 L95 38 L92 46 L85 48 L80 44 L75 48 L76 54 L82 56 L86 52 L90 54 L92 60 L85 64 L80 62 L74 66 L70 60 L68 64 L65 72 L62 80 L58 88 L52 98 L50 106 L48 106 L46 98 L40 85 L35 76 L32 70 L28 66 L22 66 L18 62 L15 56 L12 50 L16 46 L24 46 L28 40 L35 34 L38 28 L42 22 L45 14 Z" fill="rgba(0, 240, 255, 0.15)" stroke="#00F0FF" stroke-width="1.8" stroke-linejoin="round" />
+            <circle cx="50" cy="55" r="3" fill="#FF9933" />
+            <circle cx="50" cy="55" r="6" stroke="#00FF66" stroke-width="1" stroke-dasharray="2,2" class="pulse-india" />
+          </svg>
+          <span class="footer-love-text">Made with <span class="heart-pulse">❤️</span> from <strong>India</strong> 🇮🇳</span>
         </div>
 
-        <!-- ctOS Live Surveillance Traffic & Visitor Monitor -->
-        <div class="ctos-traffic-monitor" id="ctos-traffic-monitor">
+        <!-- ctOS Live User Public IP & Location HUD -->
+        <div class="ctos-ip-monitor" id="ctos-ip-monitor">
           <span class="traffic-bracket">[</span>
-          <span class="traffic-icon">📡</span>
-          <span class="traffic-label">ctOS TRAFFIC // TOTAL HITS:</span>
-          <span id="ctos-visitor-count" class="traffic-value"><span class="traffic-counter-odometer">...</span></span>
+          <span class="traffic-icon">🌐</span>
+          <span class="traffic-label">YOUR PUBLIC IP:</span>
+          <span id="user-public-ip" class="traffic-value">Scanning...</span>
           <span class="traffic-sep">|</span>
-          <span class="traffic-label">ACTIVE SESSIONS:</span>
-          <span id="ctos-active-sessions" class="traffic-value">34 NODES</span>
+          <span class="traffic-label">LOCATION:</span>
+          <span id="user-location" class="traffic-value">Detecting...</span>
           <span class="traffic-bracket">]</span>
         </div>
       </div>
