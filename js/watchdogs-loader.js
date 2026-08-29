@@ -43,47 +43,58 @@ class WatchDogsLoader {
   }
 
   init() {
+    this.audioBtnPill = document.getElementById('wd-audio-btn-pill');
+
     // Initial cyber glitch audio burst attempt
     if (window.ctosAudio) {
       window.ctosAudio.playBootGlitch();
     }
 
-      // Glitch Skull ASCII animation
-      this.startSkullGlitch();
+    // Glitch Skull ASCII animation
+    this.startSkullGlitch();
 
-      // Start cinematic boot sequence
-      this.run10SecondBootSequence();
+    // Start cinematic boot sequence
+    this.run10SecondBootSequence();
 
-      // Interactive unmute on tap/click anywhere on loader
-      const unmuteHandler = () => {
-        if (window.ctosAudio) {
-          window.ctosAudio.unlock();
-          window.ctosAudio.playBootGlitch();
-        }
-      };
-      this.loader.addEventListener('pointerdown', unmuteHandler, { once: true, passive: true });
-      this.loader.addEventListener('click', unmuteHandler, { once: true });
-
-      // Explicit skip handler only when clicking skip button or pressing ESC
-      if (this.skipHint) {
-        this.skipHint.innerHTML = '<span class="skip-bracket">[</span> <span class="skip-key">ESC / CLICK HERE</span> <span class="skip-label">TO SKIP</span> <span class="skip-bracket">]</span>';
-        this.skipHint.addEventListener('click', (e) => {
-          e.stopPropagation();
-          this.finish();
-        });
+    // Interactive unmute on tap/click anywhere on loader
+    const unmuteHandler = (e) => {
+      if (e && e.target && e.target.closest('#wd-skip-hint')) return;
+      if (window.ctosAudio) {
+        window.ctosAudio.unlock();
+        window.ctosAudio.playBootGlitch();
       }
+      if (this.audioBtnPill) {
+        this.audioBtnPill.innerHTML = '<span class="audio-pulse-icon">🔊</span> <span class="audio-btn-text">ctOS 2.0 AUDIO SYNCED & STREAMING</span>';
+        this.audioBtnPill.style.borderColor = '#00FF66';
+        this.audioBtnPill.style.color = '#00FF66';
+        this.audioBtnPill.style.background = 'rgba(0, 255, 102, 0.15)';
+      }
+    };
 
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          this.finish();
-        } else {
-          if (window.ctosAudio) {
-            window.ctosAudio.unlock();
-            window.ctosAudio.playBootGlitch();
-          }
-        }
+    if (this.audioBtnPill) {
+      this.audioBtnPill.addEventListener('click', unmuteHandler);
+      this.audioBtnPill.addEventListener('pointerdown', unmuteHandler, { passive: true });
+    }
+    this.loader.addEventListener('pointerdown', unmuteHandler, { once: true, passive: true });
+    this.loader.addEventListener('click', unmuteHandler, { once: true });
+
+    // Explicit skip handler only when clicking skip button or pressing ESC
+    if (this.skipHint) {
+      this.skipHint.innerHTML = '<span class="skip-bracket">[</span> <span class="skip-key">ESC</span> <span class="skip-label">TO SKIP</span> <span class="skip-bracket">]</span>';
+      this.skipHint.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.finish();
       });
     }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        this.finish();
+      } else {
+        unmuteHandler();
+      }
+    });
+  }
 
     startSkullGlitch() {
       const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
