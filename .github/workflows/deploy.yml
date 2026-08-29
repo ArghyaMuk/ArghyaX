@@ -1,4 +1,4 @@
-name: Deploy ctOS
+name: Deploy ctOS 
 
 on:
   push:
