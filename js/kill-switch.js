@@ -28,49 +28,49 @@ class WatchDogsKillSwitch {
     // Audio: Initial sharp digital snap / pop
     this.playDigitalSnap();
 
-    // 1. Stage 1: Trigger (0.0s - 0.3s) - Sharp pure white/cyan flash cut
+    // 1. Stage 1: Trigger (0.0s - 0.4s) - Sharp pure white/cyan flash cut
     this.overlay.classList.remove('ks-hidden');
     this.overlay.className = 'ks-stage-trigger';
 
-    // 2. Stage 2: Breach Effect (0.3s - 1.0s) - Digital stutter cuts & rectangular slices
+    // 2. Stage 2: Breach Effect (0.4s - 1.3s) - Digital stutter cuts & rectangular slices
     setTimeout(() => {
       this.overlay.className = 'ks-stage-breach';
       this.playStutterBursts();
-    }, 300);
+    }, 400);
 
-    // 3. Stage 3: Data Corruption & Map Activation (1.0s - 1.8s)
+    // 3. Stage 3: Data Corruption & Map Activation (1.3s - 2.2s)
     setTimeout(() => {
       this.overlay.className = 'ks-stage-corruption';
       this.populateHexMatrix();
       this.startErraticCounters();
-    }, 1000);
+    }, 1300);
 
-    // 4. Stage 4: Lockout Reveal with Full ctOS Map (1.8s - 2.2s)
+    // 4. Stage 4: Lockout Reveal with Full ctOS Map (2.2s - 3.0s)
     setTimeout(() => {
       this.overlay.className = 'ks-stage-lockout';
       this.playLockoutSlam();
       this.glitchTextJitter('CONTROL LOST');
-    }, 1800);
-
-    // 5. Stage 5: Hold with Background Surveillance Map (2.2s - 4.0s)
-    setTimeout(() => {
-      this.overlay.className = 'ks-stage-hold';
     }, 2200);
 
-    // 6. Stage 6: Recovery (4.0s - 4.8s) - Scan-bar sweep & typewriter "RESTORING ACCESS"
+    // 5. Stage 5: Hold with Background Surveillance Map (3.0s - 4.6s)
+    setTimeout(() => {
+      this.overlay.className = 'ks-stage-hold';
+    }, 3000);
+
+    // 6. Stage 6: Recovery (4.6s - 5.8s) - Scan-bar sweep & typewriter "RESTORING ACCESS"
     setTimeout(() => {
       this.overlay.className = 'ks-stage-recovery';
       this.typewriterRecovery("RESTORING ACCESS...");
-    }, 4000);
+    }, 4600);
 
-    // 7. Stage 7: Reload (4.8s) - Final sharp snap flash & window reload
+    // 7. Stage 7: Reload (Exactly 6.0s) - Final sharp snap flash & window reload
     setTimeout(() => {
       this.overlay.className = 'ks-stage-reload-flash';
       this.playDigitalSnap();
       setTimeout(() => {
         window.location.reload();
-      }, 120);
-    }, 4800);
+      }, 150);
+    }, 5850);
   }
 
   // Real-Time ctOS City Map Visualizer on Canvas
