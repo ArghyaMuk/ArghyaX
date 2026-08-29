@@ -352,3 +352,58 @@ function showToast(message) {
     toast.classList.remove('show');
   }, 3800);
 }
+
+/* --------------------------------------------------------------------------
+   6. Watch Dogs 2 ctOS Security Guard & Right-Click Restriction Engine
+   -------------------------------------------------------------------------- */
+(function() {
+  'use strict';
+
+  function showCtosAccessDenied(x, y, customText) {
+    // Play cyber rejection audio chirp
+    if (window.soundFX) {
+      window.soundFX.playKeyClick();
+    }
+
+    const badge = document.createElement('div');
+    badge.className = 'ctos-access-denied-badge';
+    badge.style.left = `${Math.min(Math.max(x, 140), window.innerWidth - 140)}px`;
+    badge.style.top = `${Math.min(Math.max(y, 40), window.innerHeight - 40)}px`;
+    badge.innerHTML = `
+      <span class="ctos-denied-icon">⚠️</span>
+      <span>${customText || 'ctOS_RESTRICTION: CONTEXT MENU DISABLED'}</span>
+      <span class="ctos-denied-tag">0x403</span>
+    `;
+
+    document.body.appendChild(badge);
+
+    setTimeout(() => {
+      if (badge && badge.parentElement) {
+        badge.parentElement.removeChild(badge);
+      }
+    }, 1300);
+  }
+
+  // 1. Intercept and restrict right-click context menu
+  document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    showCtosAccessDenied(e.clientX, e.clientY, 'ACCESS DENIED // RIGHT-CLICK RESTRICTED');
+  }, { capture: true });
+
+  // 2. Intercept common developer inspection keyboard shortcuts
+  document.addEventListener('keydown', (e) => {
+    // Block F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, Ctrl+U (View Source)
+    if (
+      e.key === 'F12' ||
+      (e.ctrlKey && e.shiftKey && ['I', 'i', 'J', 'j', 'C', 'c'].includes(e.key)) ||
+      (e.ctrlKey && ['U', 'u', 'S', 's'].includes(e.key))
+    ) {
+      e.preventDefault();
+      showCtosAccessDenied(window.innerWidth / 2, window.innerHeight / 2, 'ctOS SECURITY // INSPECTION RESTRICTED');
+      showToast('[!] DedSec Security Matrix: Source inspection restricted by ctOS.');
+    }
+  }, { capture: true });
+
+  // 3. Object immutability & Encapsulation
+  Object.freeze(window.soundFX);
+})();

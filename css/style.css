@@ -3343,6 +3343,55 @@ textarea.form-control {
   background: #ffffff !important;
 }
 
+/* ==========================================================================
+   21. WATCH DOGS 2 ctOS SECURITY GUARD & RIGHT-CLICK RESTRICTION HUD
+   ========================================================================== */
+.ctos-access-denied-badge {
+  position: fixed;
+  z-index: 99999999;
+  background: rgba(8, 12, 16, 0.96);
+  border: 1px solid #FF3B3B;
+  box-shadow: 0 0 25px rgba(255, 59, 59, 0.5), 0 8px 30px rgba(0, 0, 0, 0.8);
+  color: #FF3B3B;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.55rem 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: none;
+  transform: translate(-50%, -130%);
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+  animation: ctos-denied-pop 1.3s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+  white-space: nowrap;
+}
+
+.ctos-denied-icon {
+  font-size: 0.9rem;
+  animation: ctos-blink 0.4s steps(2) infinite;
+}
+
+.ctos-denied-tag {
+  background: rgba(255, 59, 59, 0.15);
+  padding: 0.1rem 0.35rem;
+  border-radius: 2px;
+  color: #FFFFFF;
+}
+
+@keyframes ctos-denied-pop {
+  0% { opacity: 0; transform: translate(-50%, -100%) scale(0.9); }
+  15% { opacity: 1; transform: translate(-50%, -130%) scale(1); }
+  80% { opacity: 1; transform: translate(-50%, -130%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -150%) scale(0.95); }
+}
+
+@keyframes ctos-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
 
 
 
