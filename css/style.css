@@ -65,53 +65,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. Watch Dogs 2 ctOS Light Mode Palette (Technical Lab Off-White)
-   -------------------------------------------------------------------------- */
-[data-theme="light"] {
-  --bg-primary: #EAEDEF;
-  --bg-secondary: #F4F6F7;
-  --bg-tertiary: #DCE2E6;
-  --bg-card: rgba(244, 246, 247, 0.94);
-  --bg-card-hover: rgba(255, 255, 255, 0.98);
-  --bg-glass: rgba(234, 237, 239, 0.88);
-  --bg-glass-strong: rgba(244, 246, 247, 0.96);
-
-  /* Deep High-Contrast Cyan & Accents for Light Theme */
-  --accent-cyan: #0088A3;
-  --accent-cyan-rgb: 0, 136, 163;
-  --accent-cyan-hover: #006E8C;
-  --accent-blue: #0066CC;
-  --accent-blue-rgb: 0, 102, 204;
-  --accent-red: #D32F2F;
-  --accent-red-rgb: 211, 47, 47;
-  --accent-lime: #008A3B;
-  --accent-lime-rgb: 0, 138, 59;
-  --accent-purple: #6D28D9;
-  --accent-purple-rgb: 109, 40, 217;
-
-  /* Typography Colors */
-  --text-primary: #111417;
-  --text-secondary: #475560;
-  --text-muted: #7A8993;
-  --text-inverse: #F4F6F7;
-
-  /* ctOS Hairline Borders & Brackets */
-  --border-subtle: #CBD2D6;
-  --border-glow: rgba(0, 136, 163, 0.4);
-  --border-card: rgba(0, 136, 163, 0.28);
-  --border-hairline: rgba(0, 136, 163, 0.2);
-  --card-bracket-color: #0088A3;
-  --grid-overlay: rgba(0, 136, 163, 0.035);
-  --scanline-color: rgba(0, 0, 0, 0.04);
-
-  /* Glows */
-  --glow-cyan: 0 0 20px rgba(0, 136, 163, 0.2);
-  --glow-subtle: 0 8px 25px 0 rgba(0, 0, 0, 0.08);
-  --shadow-card: 0 8px 24px -4px rgba(17, 20, 23, 0.08);
-}
-
-/* --------------------------------------------------------------------------
-   2. Reset & Global Base
+   2. Reset & Global Base (Permanent Watch Dogs 2 ctOS Dark Mode)
    -------------------------------------------------------------------------- */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -126,7 +80,13 @@ html {
 }
 
 body {
-  background-color: var(--bg-primary);
+  background-color: #0A0E12;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.07) 0%, transparent 60%),
+    linear-gradient(rgba(0, 240, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.025) 1px, transparent 1px);
+  background-size: 100% 100%, 64px 64px, 64px 64px;
+  background-attachment: fixed;
   color: var(--text-primary);
   font-family: var(--font-sans);
   line-height: 1.65;

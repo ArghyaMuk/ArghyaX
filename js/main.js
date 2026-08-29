@@ -175,53 +175,10 @@ document.addEventListener('DOMContentLoaded', () => {
     'Python, Kubernetes & Cloud Native CI/CD'
   ]);
 
-  // 2. Sound Toggle Button
-  const audioBtn = document.getElementById('audio-toggle-btn');
-  if (audioBtn) {
-    audioBtn.addEventListener('click', () => {
-      window.soundFX.toggle();
-    });
-  }
-
-  // 3. Watch Dogs 2 ctOS Dark / Light Theme Manager
-  const themeBtn = document.getElementById('theme-toggle-btn');
-  const savedTheme = localStorage.getItem('arghyax_theme');
-  const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-  let currentTheme = savedTheme || (prefersLight ? 'light' : 'dark');
-
-  function applyTheme(theme, isUserClick = false) {
-    currentTheme = theme;
-    document.documentElement.setAttribute('data-theme', theme);
-    document.body.setAttribute('data-theme', theme);
-    localStorage.setItem('arghyax_theme', theme);
-
-    if (themeBtn) {
-      const nextLabel = theme === 'dark' ? 'LIGHT' : 'DARK';
-      const nextIcon = theme === 'dark' ? '☀️' : '🌙';
-      themeBtn.innerHTML = `<span class="theme-btn-bracket">[</span> <span class="theme-icon">${nextIcon}</span> <span class="theme-btn-text">${nextLabel}</span> <span class="theme-btn-bracket">]</span>`;
-      themeBtn.setAttribute('title', `Active: ${theme.toUpperCase()} Mode. Click to switch to ${nextLabel} Mode`);
-    }
-
-    if (isUserClick) {
-      if (window.soundFX) window.soundFX.playKeyClick();
-      // Digital glitch snap flash
-      document.body.classList.add('theme-glitch-snap');
-      setTimeout(() => {
-        document.body.classList.remove('theme-glitch-snap');
-      }, 180);
-      showToast(`[ctOS] THEME RECONFIGURED // ${theme.toUpperCase()} MODE ACTIVE`);
-    }
-  }
-
-  // Initial apply
-  applyTheme(currentTheme, false);
-
-  if (themeBtn) {
-    themeBtn.addEventListener('click', () => {
-      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      applyTheme(nextTheme, true);
-    });
-  }
+  // 2. Lock Theme Permanently to Watch Dogs 2 ctOS Dark Mode
+  document.documentElement.setAttribute('data-theme', 'dark');
+  document.body.setAttribute('data-theme', 'dark');
+  localStorage.setItem('arghyax_theme', 'dark');
 
   // 4. Navbar Scroll State & Spy
   const navbar = document.querySelector('.navbar');
