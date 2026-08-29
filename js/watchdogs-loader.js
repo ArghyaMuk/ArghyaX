@@ -48,46 +48,46 @@ class WatchDogsLoader {
       window.ctosAudio.playBootGlitch();
     }
 
-    // Glitch Skull ASCII animation
-    this.startSkullGlitch();
+      // Glitch Skull ASCII animation
+      this.startSkullGlitch();
 
-    // Start cinematic boot sequence
-    this.run10SecondBootSequence();
+      // Start cinematic boot sequence
+      this.run10SecondBootSequence();
 
-    // Interactive unmute on tap/click anywhere on loader
-    const unmuteHandler = () => {
-      if (window.ctosAudio) {
-        window.ctosAudio.unlock();
-        window.ctosAudio.playBootGlitch();
-      }
-    };
-    this.loader.addEventListener('pointerdown', unmuteHandler, { once: true, passive: true });
-    this.loader.addEventListener('click', unmuteHandler, { once: true });
-
-    // Explicit skip handler only when clicking skip button or pressing ESC
-    if (this.skipHint) {
-      this.skipHint.innerHTML = '<span class="skip-bracket">[</span> <span class="skip-key">ESC / CLICK HERE</span> <span class="skip-label">TO SKIP</span> <span class="skip-bracket">]</span>';
-      this.skipHint.addEventListener('click', (e) => {
-        e.stopPropagation();
-        this.finish();
-      });
-    }
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        this.finish();
-      } else {
+      // Interactive unmute on tap/click anywhere on loader
+      const unmuteHandler = () => {
         if (window.ctosAudio) {
           window.ctosAudio.unlock();
           window.ctosAudio.playBootGlitch();
         }
-      }
-    });
-  }
+      };
+      this.loader.addEventListener('pointerdown', unmuteHandler, { once: true, passive: true });
+      this.loader.addEventListener('click', unmuteHandler, { once: true });
 
-  startSkullGlitch() {
-    const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const originalText = `
+      // Explicit skip handler only when clicking skip button or pressing ESC
+      if (this.skipHint) {
+        this.skipHint.innerHTML = '<span class="skip-bracket">[</span> <span class="skip-key">ESC / CLICK HERE</span> <span class="skip-label">TO SKIP</span> <span class="skip-bracket">]</span>';
+        this.skipHint.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.finish();
+        });
+      }
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          this.finish();
+        } else {
+          if (window.ctosAudio) {
+            window.ctosAudio.unlock();
+            window.ctosAudio.playBootGlitch();
+          }
+        }
+      });
+    }
+
+    startSkullGlitch() {
+      const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      const originalText = `
      .--------------------------------------------------.
     |  [!] WATCH DOGS 2 // DEDSEC ctOS_2.0 OVERRIDE       |
     |      TARGET: ARGHYAX NEURAL AGENTIC NETWORK         |
@@ -104,114 +104,114 @@ class WatchDogsLoader {
                        \\/
     `;
 
-    if (!this.skullElement) return;
-    this.skullElement.textContent = originalText;
+      if (!this.skullElement) return;
+      this.skullElement.textContent = originalText;
 
-    this.glitchInterval = setInterval(() => {
-      if (this.isDone) {
-        clearInterval(this.glitchInterval);
-        return;
-      }
-      if (Math.random() > 0.6) {
-        const textArr = originalText.split('');
-        for (let i = 0; i < 8; i++) {
-          const idx = Math.floor(Math.random() * textArr.length);
-          if (textArr[idx] !== ' ' && textArr[idx] !== '\n') {
-            textArr[idx] = chars[Math.floor(Math.random() * chars.length)];
+      this.glitchInterval = setInterval(() => {
+        if (this.isDone) {
+          clearInterval(this.glitchInterval);
+          return;
+        }
+        if (Math.random() > 0.6) {
+          const textArr = originalText.split('');
+          for (let i = 0; i < 8; i++) {
+            const idx = Math.floor(Math.random() * textArr.length);
+            if (textArr[idx] !== ' ' && textArr[idx] !== '\n') {
+              textArr[idx] = chars[Math.floor(Math.random() * chars.length)];
+            }
+          }
+          this.skullElement.textContent = textArr.join('');
+          setTimeout(() => {
+            if (this.skullElement) this.skullElement.textContent = originalText;
+          }, 90);
+        }
+      }, 140);
+    }
+
+    run10SecondBootSequence() {
+      this.startTime = performance.now();
+      let lastLogIdx = -1;
+
+      const tick = (now) => {
+        if (this.isDone) return;
+
+        const elapsed = now - this.startTime;
+        let progress = Math.min(elapsed / this.totalDurationMs, 1.0);
+
+        // Glitch progress percentage (0 - 100%)
+        const pct = Math.floor(progress * 100);
+        if (this.progressBar) this.progressBar.style.width = pct + '%';
+        if (this.progressText) this.progressText.textContent = pct + '%';
+
+        // Periodic audio blips at 25%, 50%, 75%
+        const step = Math.floor(pct / 25);
+        if (step > this.lastAudioStep && step < 4) {
+          this.lastAudioStep = step;
+          if (window.ctosAudio) {
+            window.ctosAudio.playTelemetryBeep(400 + step * 200);
           }
         }
-        this.skullElement.textContent = textArr.join('');
-        setTimeout(() => {
-          if (this.skullElement) this.skullElement.textContent = originalText;
-        }, 90);
+
+        // Stream logs sequentially across the boot duration
+        const targetLogIdx = Math.floor(progress * this.logs.length);
+        if (targetLogIdx > lastLogIdx && targetLogIdx < this.logs.length) {
+          for (let i = lastLogIdx + 1; i <= targetLogIdx; i++) {
+            this.appendLog(this.logs[i]);
+          }
+          lastLogIdx = targetLogIdx;
+        }
+
+        if (progress < 1.0) {
+          requestAnimationFrame(tick);
+        } else {
+          if (this.progressBar) this.progressBar.style.width = '100%';
+          if (this.progressText) this.progressText.textContent = '100%';
+          setTimeout(() => this.finish(), 400);
+        }
+      };
+
+      requestAnimationFrame(tick);
+    }
+
+    appendLog(text) {
+      if (!this.terminalStream) return;
+      const logLine = document.createElement('div');
+      logLine.className = 'wd-log-row';
+      logLine.innerHTML = `<span class="wd-cyan">[ctOS]</span> <span class="wd-txt">${text}</span>`;
+      this.terminalStream.appendChild(logLine);
+      this.terminalStream.scrollTop = this.terminalStream.scrollHeight;
+
+      // Play micro-tick on every streaming log line
+      if (window.ctosAudio) {
+        window.ctosAudio.playDataTick();
       }
-    }, 140);
-  }
+    }
 
-  run10SecondBootSequence() {
-    this.startTime = performance.now();
-    let lastLogIdx = -1;
-
-    const tick = (now) => {
+    finish() {
       if (this.isDone) return;
+      this.isDone = true;
 
-      const elapsed = now - this.startTime;
-      let progress = Math.min(elapsed / this.totalDurationMs, 1.0);
+      if (this.progressBar) this.progressBar.style.width = '100%';
+      if (this.progressText) this.progressText.textContent = '100%';
 
-      // Glitch progress percentage (0 - 100%)
-      const pct = Math.floor(progress * 100);
-      if (this.progressBar) this.progressBar.style.width = pct + '%';
-      if (this.progressText) this.progressText.textContent = pct + '%';
-
-      // Periodic audio blips at 25%, 50%, 75%
-      const step = Math.floor(pct / 25);
-      if (step > this.lastAudioStep && step < 4) {
-        this.lastAudioStep = step;
-        if (window.ctosAudio) {
-          window.ctosAudio.playTelemetryBeep(400 + step * 200);
-        }
+      // Play authentic Watch Dogs 2 breach access success chord
+      if (window.ctosAudio) {
+        window.ctosAudio.playSuccessChirp();
       }
 
-      // Stream logs sequentially across the boot duration
-      const targetLogIdx = Math.floor(progress * this.logs.length);
-      if (targetLogIdx > lastLogIdx && targetLogIdx < this.logs.length) {
-        for (let i = lastLogIdx + 1; i <= targetLogIdx; i++) {
-          this.appendLog(this.logs[i]);
-        }
-        lastLogIdx = targetLogIdx;
-      }
+      // Glitch flash transition
+      this.loader.classList.add('wd-glitch-exit');
 
-      if (progress < 1.0) {
-        requestAnimationFrame(tick);
-      } else {
-        if (this.progressBar) this.progressBar.style.width = '100%';
-        if (this.progressText) this.progressText.textContent = '100%';
-        setTimeout(() => this.finish(), 400);
-      }
-    };
-
-    requestAnimationFrame(tick);
-  }
-
-  appendLog(text) {
-    if (!this.terminalStream) return;
-    const logLine = document.createElement('div');
-    logLine.className = 'wd-log-row';
-    logLine.innerHTML = `<span class="wd-cyan">[ctOS]</span> <span class="wd-txt">${text}</span>`;
-    this.terminalStream.appendChild(logLine);
-    this.terminalStream.scrollTop = this.terminalStream.scrollHeight;
-
-    // Play micro-tick on every streaming log line
-    if (window.ctosAudio) {
-      window.ctosAudio.playDataTick();
-    }
-  }
-
-  finish() {
-    if (this.isDone) return;
-    this.isDone = true;
-
-    if (this.progressBar) this.progressBar.style.width = '100%';
-    if (this.progressText) this.progressText.textContent = '100%';
-
-    // Play authentic Watch Dogs 2 breach access success chord
-    if (window.ctosAudio) {
-      window.ctosAudio.playSuccessChirp();
-    }
-
-    // Glitch flash transition
-    this.loader.classList.add('wd-glitch-exit');
-
-    setTimeout(() => {
-      this.loader.classList.add('wd-hidden');
       setTimeout(() => {
-        if (this.loader && this.loader.parentElement) {
-          this.loader.parentElement.removeChild(this.loader);
-        }
-      }, 600);
-    }, 450);
+        this.loader.classList.add('wd-hidden');
+        setTimeout(() => {
+          if (this.loader && this.loader.parentElement) {
+            this.loader.parentElement.removeChild(this.loader);
+          }
+        }, 600);
+      }, 450);
+    }
   }
-}
 
 document.addEventListener('DOMContentLoaded', () => {
   window.watchDogsLoader = new WatchDogsLoader();
